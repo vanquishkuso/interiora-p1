@@ -10,9 +10,11 @@ const pageQuery = graphql`
             slug
             price
             images {
-                handle
-                width
-                height
+                productImages {
+                    images {
+                      url
+                    }
+                  }
               }
         }
     }
@@ -23,12 +25,13 @@ const IndexPage = () => {
     const { gcms: { products } } = useStaticQuery(pageQuery)
 
     return (
+
         <div>
             {products.map(({ slug, ...products }) => (
                 <div key={slug}>
-                    {console.log(products.images)}
-                    <GCMSImg
-                        image={products.images}
+                    { console.log(products.images[0].productImages[0].images[0].url)}
+                    <img
+                        src={products.images[0].productImages[0].images[0].url}
                         style={{ margin: '0 auto', maxWidth: '50%' }}
                     />
                     <Link key={slug} to={`/products/${slug}`}>

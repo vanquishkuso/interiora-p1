@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-//import GCMSImg from 'graphcms-image'
+import GCMSImg from 'graphcms-image';
 import GraphImg from "@graphcms/react-image";
 
 
@@ -11,20 +11,10 @@ const ProductPage = ({
 }) => (
 
     <React.Fragment>
+        {console.log(product.images[0].url)}
         <h1>{product.name}</h1>
         <p>{product.description}</p>
-
-        <img src={product.images} alt="1" />
-        <img src={product.images.url} alt="2" />
-        <img src={product.images.handle} alt="3" />
-        <img src={product.images.fileName} alt="4" />
-        <GraphImg image={product.images} maxWidth={800} />
-
-
-        <p>{product.images.url}</p>
-        <p>{product.images.handle}</p>
-        <p> dasd {product.images.fileName}</p>
-
+        <img src={product.images[0].url} style={{ maxWidth: "50%" }} alt="produktbild" />
         <p>
             {
                 new Intl.NumberFormat("sv-SE", {
@@ -46,7 +36,8 @@ export const pageQuery = graphql`
                         images {
                             handle
                             width
-                            height              
+                            height
+                            url             
                           }
                     }
                 }
