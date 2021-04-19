@@ -33,16 +33,16 @@ const IndexPage = () => {
             <Hero />
             <ProductsWrapper>
                 {products.map(({ slug, ...products }) => (
-                    <div key={slug}>
+                    <Product>
                         <img
                             src={products.images[0].productImages[0].images[0].url}
-                            style={{ margin: '0 auto', maxWidth: '50%' }}
+                            style={{ maxWidth: '90%', borderRadius: '5px' }}
                         />
                         <Link key={slug} to={`/products/${slug}`}>
                             {products.name}
                         </Link>
-
-                    </div>
+                        <Price>{products.price}</Price>
+                    </Product>
                 ))}
             </ProductsWrapper>
         </Layout>
@@ -52,5 +52,25 @@ const IndexPage = () => {
 export default IndexPage
 
 const ProductsWrapper = styled.div`
-    display: block;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+
+    @media screen and (max-width: 500px) {
+    grid-template-columns: auto;
+    padding: 1rem;
+}
+`
+
+const Product = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @media screen and (max-width: 500px) {
+        margin-bottom: 5em;
+}
+`
+
+const Price = styled.p`
+
 `
