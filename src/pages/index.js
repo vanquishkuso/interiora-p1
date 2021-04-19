@@ -1,6 +1,7 @@
 import React from 'react';
 import { graphql, useStaticQuery, Link } from 'gatsby'
 
+
 const pageQuery = graphql`
 {
     gcms {
@@ -8,6 +9,11 @@ const pageQuery = graphql`
             name
             slug
             price
+            images {
+                handle
+                width
+                height
+              }
         }
     }
     }
@@ -19,9 +25,11 @@ const IndexPage = () => {
     return (
         <div>
             {products.map(({ slug, ...products }) => (
-                <Link key={slug} to={`/products/${slug}`}>
-                    {products.name}
-                </Link>
+                <div key={slug}>
+                    <Link key={slug} to={`/products/${slug}`}>
+                        {products.name}
+                    </Link>
+                </div>
             ))}
         </div>
     )

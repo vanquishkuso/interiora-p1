@@ -1,5 +1,13 @@
 module.exports = {
     plugins: [
+        {
+            resolve: `gatsby-source-graphql`,
+            options: {
+                typeName: `GraphCMS`,
+                fieldName: `gcms`,
+                url: `https://api-eu-central-1.graphcms.com/v2/cknom0fch1vfi01xmghvr0rq3/master`
+            },
+        },
         `gatsby-plugin-react-helmet`,
         {
             resolve: `gatsby-source-filesystem`,
@@ -10,15 +18,6 @@ module.exports = {
         },
         `gatsby-transformer-sharp`,
         `gatsby-plugin-sharp`,
-
-        {
-            resolve: `gatsby-source-graphql`,
-            options: {
-                typeName: `GraphCMS`,
-                fieldName: `gcms`,
-                url: `https://api-eu-central-1.graphcms.com/v2/cknom0fch1vfi01xmghvr0rq3/master`
-            },
-        },
         `gatsby-transformer-json`,
         {
             resolve: `gatsby-source-filesystem`,
