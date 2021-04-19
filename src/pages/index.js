@@ -1,6 +1,9 @@
-import React from 'react';
+import React from 'react'
+import styled from 'styled-components'
 import { graphql, useStaticQuery, Link } from 'gatsby'
-import GCMSImg from 'graphcms-image';
+import Layout from "../components/Layout"
+import SEO from '../components/Seo'
+import Hero from '../components/Hero'
 
 const pageQuery = graphql`
 {
@@ -25,23 +28,29 @@ const IndexPage = () => {
     const { gcms: { products } } = useStaticQuery(pageQuery)
 
     return (
+        <Layout>
+            <SEO title="Hem" />
+            <Hero />
+            <ProductsWrapper>
+                {products.map(({ slug, ...products }) => (
+                    <div key={slug}>
+                        <img
+                            src={products.images[0].productImages[0].images[0].url}
+                            style={{ margin: '0 auto', maxWidth: '50%' }}
+                        />
+                        <Link key={slug} to={`/products/${slug}`}>
+                            {products.name}
+                        </Link>
 
-        <div>
-            {products.map(({ slug, ...products }) => (
-                <div key={slug}>
-                    { console.log(products.images[0].productImages[0].images[0].url)}
-                    <img
-                        src={products.images[0].productImages[0].images[0].url}
-                        style={{ margin: '0 auto', maxWidth: '50%' }}
-                    />
-                    <Link key={slug} to={`/products/${slug}`}>
-                        {products.name}
-                    </Link>
-
-                </div>
-            ))}
-        </div>
+                    </div>
+                ))}
+            </ProductsWrapper>
+        </Layout>
     )
 }
 
 export default IndexPage
+
+const ProductsWrapper = styled.div`
+    display: block;
+`

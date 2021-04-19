@@ -1,5 +1,6 @@
 module.exports = {
     plugins: [
+        "gatsby-plugin-styled-components",
         {
             resolve: `gatsby-source-graphql`,
             options: {
@@ -26,7 +27,15 @@ module.exports = {
             },
         },
         "gatsby-plugin-image",
-        "gatsby-plugin-styled-components"
+        {
+            resolve: `gatsby-plugin-google-fonts`,
+            options: {
+                fonts: [
+                    `Poppins`
+                ],
+                display: 'swap'
+            }
+        }
     ],
 }
 
