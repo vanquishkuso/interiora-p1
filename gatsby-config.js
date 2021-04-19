@@ -5,7 +5,7 @@ module.exports = {
             options: {
                 typeName: `GraphCMS`,
                 fieldName: `gcms`,
-                url: `https://api-eu-central-1.graphcms.com/v2/cknom0fch1vfi01xmghvr0rq3/master`
+                url: `https://api-eu-central-1.graphcms.com/v2/cknom0fch1vfi01xmghvr0rq3/master`,
             },
         },
         `gatsby-plugin-react-helmet`,

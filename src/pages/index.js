@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql, useStaticQuery, Link } from 'gatsby'
-
+import GCMSImg from 'graphcms-image';
 
 const pageQuery = graphql`
 {
@@ -26,9 +26,15 @@ const IndexPage = () => {
         <div>
             {products.map(({ slug, ...products }) => (
                 <div key={slug}>
+                    {console.log(products.images)}
+                    <GCMSImg
+                        image={products.images}
+                        style={{ margin: '0 auto', maxWidth: '50%' }}
+                    />
                     <Link key={slug} to={`/products/${slug}`}>
                         {products.name}
                     </Link>
+
                 </div>
             ))}
         </div>

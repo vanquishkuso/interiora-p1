@@ -30,6 +30,7 @@
         "gatsby-plugin-sharp": "^3.3.0",
         "gatsby-plugin-styled-components": "^4.2.0",
         "gatsby-source-filesystem": "^3.2.0",
+        "gatsby-source-graphcms": "^2.5.1",
         "gatsby-source-graphql": "^3.3.0",
         "gatsby-source-stripe": "^3.2.2",
         "gatsby-transformer-json": "^3.3.0",
