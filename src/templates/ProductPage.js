@@ -11,7 +11,7 @@ const ProductPage = ({
 }) => (
 
     <React.Fragment>
-        {console.log(product.images[0].url)}
+
         <h1>{product.name}</h1>
         <p>{product.description}</p>
         <img src={product.images[0].url} style={{ maxWidth: "50%" }} alt="produktbild" />
