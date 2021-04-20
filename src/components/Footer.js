@@ -51,6 +51,7 @@ const FooterDesc = styled.div`
     
     h1 {
         font-family: 'Poppins';
+        font-weight: 0;
         margin-bottom: 3rem;
         color: #fff;
     }
@@ -89,7 +90,7 @@ const FooterLink = styled(Link)`
 
     &:hover {
         color: #373737;
-        transition: 0.3s ease-out;
+        transition: 0.3s ease;
     }
 `
 
