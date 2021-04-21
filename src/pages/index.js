@@ -5,6 +5,7 @@ import Layout from "../components/Layout"
 import SEO from '../components/Seo'
 import Hero from '../components/Hero'
 import { Button } from '../components/Button'
+import AddToCartButton from '../components/AddToCartButton'
 
 const pageQuery = graphql`
 {
@@ -17,15 +18,11 @@ const pageQuery = graphql`
                 name
             }
             images {
-                productImages {
-                    images {
-                      url
-                    }
-                  }
-              }
+                url    
+            }
         }
     }
-    }
+}
 `
 
 const IndexPage = () => {
@@ -41,7 +38,7 @@ const IndexPage = () => {
                         <ImageWrapper>
                             <ImageLink to={`/products/${slug}`}>
                                 <img
-                                    src={products.images[0].productImages[0].images[0].url}
+                                    src={products.images[0].url}
                                     style={{
                                         maxWidth: '100%',
                                         borderRadius: '5px',
@@ -60,7 +57,7 @@ const IndexPage = () => {
                             <Price>{products.price} kr</Price>
                         </LinkWrapper>
                         <ButtonWrapper>
-                            <Button primary={true} round={true}>KÖP</Button>
+                            <AddToCartButton product={products} />
                         </ButtonWrapper>
                     </Product>
                 ))}
