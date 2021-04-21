@@ -20,7 +20,7 @@ const ProductPage = ({
             </ImageColumn>
             <TitelColumn>
                 <ProductTitle>{product.name}</ProductTitle>
-
+                <ProductCategory>{product.categories[0].name}</ProductCategory>
                 <ProductPrice>
                     {
                         new Intl.NumberFormat("sv-SE", {
@@ -113,6 +113,6 @@ const ButtonWrapper = styled.div`
     }
 `
 
-const Category = styled.p`
+const ProductCategory = styled.p`
 
 `
