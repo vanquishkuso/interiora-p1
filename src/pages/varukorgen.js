@@ -110,7 +110,7 @@ const CartPage = () => {
 
 
             </CartWrapper>
-            <FormWrapper>
+            {cartCost ? <FormWrapper>
                 <FormTitle>Personuppgifter</FormTitle>
                     För- och efternamn <Name />
 
@@ -135,7 +135,7 @@ const CartPage = () => {
                         <Button big="false" round="true">Beställ</Button>
                     </AniLink>
                 </ButtonWrapper>
-            </FormWrapper>
+            </FormWrapper> : null}
 
             { /* <button onClick={handleCalc}>Räkna ut</button> */}
 
@@ -263,6 +263,7 @@ const RightColumn = styled.div`
 const TrashCan = styled(BiTrash)`
     font-size: 1.6em;
     transition: 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+    cursor: pointer;
     &:hover {
         color: #877D70;
     }
