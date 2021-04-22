@@ -1,20 +1,44 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { Button } from './Button'
-import Picture from '../assets/images/hero1.jpg'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
+import Lampor from '../assets/images/Lampor.jpg'
+import Bord from '../assets/images/Bord.jpg'
+import Hero1 from '../assets/images/hero1.jpg'
 
-const Hero = () => {
+
+const Hero = ({ title, paragraph, picture }) => {
+
+    const [picState, setPicState] = useState(categoryTitle)
+    const [pic, setPic] = useState()
+    const getSiteTitle = document.title
+    const categoryTitle = getSiteTitle.substr(0, getSiteTitle.indexOf(" "))
+    console.log(document.title.substr(0, getSiteTitle.indexOf(" ")))
+    console.log(getSiteTitle)
+
+
+
+    useEffect(() => {
+        if (categoryTitle === "Bord") {
+            setPic(<ImgBg src={Lampor} />)
+        }
+        if (getSiteTitle === "Lampor") {
+            setPic(<ImgBg src={Bord} />)
+        }
+
+    }, [picState])
+
     return (
         <HeroContainer>
             <HeroBg>
-                {/*<VideoBg src={Video} autoPlay loop muted playsInline type="video/mp4" />*/}
-                <ImgBg src={Picture} />
+                {
+                    pic
+                }
             </HeroBg>
             <HeroContent>
                 <HeroItems>
-                    <HeroH1>Interiöra</HeroH1>
-                    <HeroP>Minimalism när den är som bäst</HeroP>
+                    <HeroH1>{title}</HeroH1>
+                    <HeroP>{paragraph}</HeroP>
 
                     <AnchorLink href="#product-section"><Button primary="true" big="true" round="true">Till produkterna</Button></AnchorLink>
                 </HeroItems>

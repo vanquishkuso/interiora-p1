@@ -68,9 +68,11 @@ const ProductsWrapper = styled.div`
     grid-template-columns: 50% 50%;
     flex-direction: row;
     max-width: 1200px;
+    height: 60vh;
     margin: 0 auto;
 
     @media screen and (max-width: 500px) {
+        height: 80vh;
         grid-gap: 0em;
         padding: 1em;
         flex-direction: column;

@@ -71,7 +71,7 @@ const CartPage = () => {
 
                                 </LeftColumn>
                                 <RightColumn>
-                                    <h3>{data.price}</h3>
+                                    <h3>{data.price} kr</h3>
                                     <TrashCan onClick={() => {
                                         handleRemove(data.id)
                                     }} />
@@ -102,9 +102,9 @@ const CartPage = () => {
 
                 {cartCost ? <BottomRow>
                     <TotalCost>Totalt</TotalCost>
-                    <Cost>{cartCost}</Cost>
+                    <Cost>{cartCost} kr</Cost>
                     <TaxTitle>Varav moms </TaxTitle>
-                    <TaxCost>{Math.round(cartCost * 0.2)}</TaxCost>
+                    <TaxCost>{Math.round(cartCost * 0.2)} kr</TaxCost>
                 </BottomRow> : null}
 
 

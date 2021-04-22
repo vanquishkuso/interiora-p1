@@ -1,42 +1,30 @@
 import React from 'react'
+import { graphql, Link } from 'gatsby'
 import styled from 'styled-components'
-import { graphql, useStaticQuery, Link } from 'gatsby'
-import Layout from "../components/Layout"
+import { Button } from '../components/Button'
+import Layout from '../components/Layout'
 import SEO from '../components/Seo'
 import Hero from '../components/Hero'
-import { Button } from '../components/Button'
 import AddToCartButton from '../components/AddToCartButton'
-import PicturePath from './hero1.jpeg'
-import Lampor from '../assets/images/Lampor.jpg'
 
-const pageQuery = graphql`
-{
-    gcms {
-        products {
-            id
-            name
-            slug
-            price
-            categories {
-                name
-            }
-            images {
-                url    
-            }
-        }
-    }
-}
-`
-const IndexPage = () => {
-    const { gcms: { products } } = useStaticQuery(pageQuery)
 
-    return (
-        <Layout>
+const CategoryPage = ({
 
-            <SEO title="Interiöra" />
-            <Hero title={"Interiöra"} paragraph={"Minimalism när den är som bäst"} picture={PicturePath} />
-            <ProductsWrapper id="product-section">
-                {products.map(({ slug, ...products }) => (
+    data: {
+        gcms: { products },
+    },
+
+
+}) => (
+
+    <Layout>
+        {console.log(products)}
+        <Hero title={products[0].categories[0].name} paragraph={products[0].categories[0].description} />
+        <SEO title={products[0].categories[0].name + " - Interiöra"} />
+        <ProductsWrapper id="product-section">
+            {
+
+                products.map(({ slug, ...products }) => (
                     <Product>
                         <ImageWrapper>
                             <ImageLink to={`/produkt/${slug}`}>
@@ -64,12 +52,73 @@ const IndexPage = () => {
                         </ButtonWrapper>
                     </Product>
                 ))}
-            </ProductsWrapper>
-        </Layout>
-    )
-}
 
-export default IndexPage
+
+
+
+
+        </ProductsWrapper>
+    </Layout>
+)
+// filter(data => data.categories[0].name.includes(document.title.substr(0, document.title.indexOf(" ")))
+
+// .filter(data => data.categories[0].name.includes("Lampor")
+
+// <Hero title={products.categories[0].name} paragraph={products.categories[0].description} />
+// <SEO title={products.categories[0].name + " - Interiöra"} />
+
+export const pageQuery = graphql`
+query CategoryPageQuery($id: ID!) {
+    gcms {
+        products(where: {categories_every: {id: $id}}) {
+          id
+          name
+          slug
+          price
+          categories {
+              name
+              description
+          }
+          images {
+              url
+          }
+        }
+      }
+    }
+`
+
+//export const pageQuery = graphql`
+//query CategoryPageQuery($id: ID!) {
+//    gcms {
+//        categories {
+//            name
+//            id
+//            slug
+//            description
+//        }
+//        products {
+//            name
+//            id
+//            description
+//            price
+//            images {
+//                handle
+//                width
+//                height
+//                url             
+//              }
+//              categories(where: {id: $id}) {
+//                name
+//                id
+//            }
+//        }
+//    }
+//}
+//`
+
+
+
+export default CategoryPage
 
 const ProductsWrapper = styled.div`
     

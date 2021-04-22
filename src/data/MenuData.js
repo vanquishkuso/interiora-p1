@@ -1,8 +1,11 @@
 export const MenuData = [
     { title: "Hem", link: "/" },
-    { title: "Produkter", link: "/produkter" },
-    { title: "Om oss", link: "/om-oss" },
-    { title: "Kontakt oss", link: "/kontakta-oss" },
-    { title: "Till återförsäljare", link: "/aterforsaljare" },
-
+    { title: "Lampor", link: "/kategori/lampor" },
+    { title: "Stolar", link: "/kategori/stolar" },
+    { title: "Bord", link: "/kategori/bord" },
+    { title: "Matsalsgrupper", link: "/kategori/matsalsgrupper" },
+    { title: "Sängar", link: "/kategori/sangar" },
+    { title: "Soffor", link: "/kategori/soffor" },
+    { title: "Fåtöljer", link: "/kategori/fatoljer" },
+    { title: "Dekoration", link: "/kategori/dekoration" },
 ]
