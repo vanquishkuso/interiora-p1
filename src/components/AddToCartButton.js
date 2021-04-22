@@ -21,15 +21,12 @@ const AddToCartButton = ({ product }) => {
         a = JSON.parse(localStorage.getItem("products")) || [];
         a.push(data);
         localStorage.setItem("products", JSON.stringify(a))
-        console.log(JSON.parse(localStorage.getItem("products")))
-        console.log(JSON.parse(localStorage.getItem("products"))[0].id)
     }
 
     useEffect(() => {
         if (isClicked === true && clickedItem === localStorage.getItem("productid")) {
             setTimeout(() => {
                 setIsClicked(false)
-                console.log(localStorage.getItem("productid").toString())
             }, 1800)
         }
 
@@ -38,7 +35,6 @@ const AddToCartButton = ({ product }) => {
     return (
         <div>
             <Button primary={true} round={true} onClick={(e, i) => {
-
                 handleAddToCart(e)
                 addToCart(
                     {
@@ -53,9 +49,11 @@ const AddToCartButton = ({ product }) => {
 
             }}>{clickedItem == product.id && isClicked ?
                 <div><Loader type="Oval" color="#cccccc" height={30} width={30} /></div> : <p style={{ marginBottom: "5px", marginTop: "5px" }}>KÖP</p>}</Button>
-            <button onClick={() => localStorage.clear()}>Clear</button>
+
         </div>
     )
 }
+
+// <button onClick={() => localStorage.clear()}>Clear</button>
 
 export default AddToCartButton

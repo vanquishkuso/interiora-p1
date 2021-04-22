@@ -3,35 +3,44 @@ import styled from 'styled-components'
 import Layout from '../components/Layout'
 import SEO from '../components/Seo'
 import { BiTrash } from 'react-icons/bi'
+import { Button } from '../components/Button'
+import TransitionLink from "gatsby-plugin-transition-link"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 const CartPage = () => {
     const [getCart, setGetCart] = useState(JSON.parse(localStorage.getItem("products")))
     const [cart, setCart] = useState([])
     const [cartCost, setCartCost] = useState(null)
-    const [updateCart, setUpdateCart] = useState(false)
+    const [updateCart, setUpdateCart] = useState("Add")
+    const [tax, setTax] = useState(0)
 
     const handleRemove = (id) => {
-        setGetCart(getCart.filter((el) => el.id !== id))
+        setUpdateCart("Remove")
         const filtered = getCart.filter(item => item.id !== id)
         localStorage.setItem("products", JSON.stringify(filtered))
-        //   setUpdateCart(true)
+        setGetCart(filtered)
+        console.log(filtered)
+        var sum = 0;
+        for (var i = 0; i < filtered.length; i++) {
+            sum += parseInt(filtered[i].price)
+        }
+        setCartCost(sum)
+
     }
 
-    const handleTotalCost = (price) => {
-
+    const addItem = (price) => {
+        setCartCost(prevCartCost => prevCartCost + price)
+        setTax(prevTax => prevTax + cartCost * 0.2)
+        //  getCart.forEach(data => setCartCost(prev => prev + data.price))
     }
 
     const handleCalc = (e) => {
-        console.log(cartCost)
-        console.log(cart)
-        console.log(getCart)
+        console.log(cartCost * 0.2)
+        console.log(tax)
     }
 
     useEffect(() => {
         let fetchData;
-
-
-
         if (getCart === null || getCart.length === 0) {
             fetchData = (
                 <EmptyCartText>Din varukorg är tom</EmptyCartText>
@@ -39,15 +48,10 @@ const CartPage = () => {
         } else {
             fetchData = (
                 getCart.map((data, i) => {
-                    setCartCost(prevCartCost => prevCartCost + data.price)
-                    /*   if (updateCart === true) {
-                           setCartCost(prevCartCost => prevCartCost - data.price)
-                       }
-   
-                       if (updateCart === false) {
-                           setCartCost(prevCartCost => prevCartCost + data.price)
-                       }
-   */
+                    if (updateCart === "Add") {
+                        addItem(data.price);
+                    }
+
                     return (
                         <Wrapper>
                             <ProductWrapper key={data.id}>
@@ -78,9 +82,7 @@ const CartPage = () => {
                             </ProductWrapper>
                             <Line />
                         </Wrapper>
-
                     )
-
                 })
             )
 
@@ -91,39 +93,163 @@ const CartPage = () => {
     return (
         <Layout>
             <SEO title="Varukorgen - Interiöra" />
-            <Title>Varukorgen</Title>
+
 
             <CartWrapper>
+                <Title>Varukorgen</Title>
                 {cart}
 
 
-                {cartCost ? <BottomRow><TotalCost>Totalt</TotalCost><Cost>{cartCost}</Cost></BottomRow> : null}
+                {cartCost ? <BottomRow>
+                    <TotalCost>Totalt</TotalCost>
+                    <Cost>{cartCost}</Cost>
+                    <TaxTitle>Varav moms </TaxTitle>
+                    <TaxCost>{Math.round(cartCost * 0.2)}</TaxCost>
+                </BottomRow> : null}
+
 
 
             </CartWrapper>
-            <button onClick={handleCalc}>Räkna ut</button>
+            <FormWrapper>
+                <FormTitle>Personuppgifter</FormTitle>
+                    För- och efternamn <Name />
+
+
+                <AddressWrapper>
+                    <FirstColumnWrapper>
+                        <AddressTitle>Adress</AddressTitle>
+                        <Address />
+                    </FirstColumnWrapper>
+                    <SecondColumnWrapper>
+                        <ZipTitle>Postnummer</ZipTitle>
+                        <Zip />
+                    </SecondColumnWrapper>
+
+                </AddressWrapper>
+                    Ort <City />
+                   Mejladress <Mail />
+                   Telefonnummer <Phone />
+
+                <ButtonWrapper>
+                    <AniLink paintDrip to="/bekraftelse" duration={0.6} hex="#877D70" style={{ textDecoration: "none", margin: "0 auto" }}>
+                        <Button big="false" round="true">Beställ</Button>
+                    </AniLink>
+                </ButtonWrapper>
+            </FormWrapper>
+
+            { /* <button onClick={handleCalc}>Räkna ut</button> */}
+
         </Layout >
     )
 }
 
 export default CartPage
 
+const ButtonWrapper = styled.div`
+    margin: 1em auto 0 auto;
+
+`
+
+const FormTitle = styled.h2`
+
+`
+const FormWrapper = styled.form`
+    display: flex;
+    flex-direction: column;
+    max-width: 60%;
+    margin: 0 auto;
+    margin-bottom: 5em;
+
+    @media screen and (max-width: 500px) {
+        max-width: 80%; 
+    }
+`
+
+const Name = styled.input`
+    border: solid #373737 1px;
+    border-radius: 5px;
+    height: 2em;
+    margin-bottom: 1em;
+`
+
+const City = styled.input`
+    border: solid #373737 1px;
+    border-radius: 5px;
+    height: 2em;
+    margin-bottom: 1em;
+`
+
+const Mail = styled.input`
+    border: solid #373737 1px;
+    border-radius: 5px;
+    height: 2em;
+    margin-bottom: 1em;
+`
+
+const Phone = styled.input`
+    border: solid #373737 1px;
+    border-radius: 5px;
+    height: 2em;
+    margin-bottom: 1em;
+`
+
+const Address = styled.input`
+    border: solid #373737 1px;
+    border-radius: 5px;
+    height: 2em;
+    margin-bottom: 1em;
+`
+
+const AddressTitle = styled.p`
+
+`
+
+const ZipTitle = styled.p`
+
+`
+
+const Zip = styled.input`
+    width: 100%;
+    height: 2em;
+    border: solid #373737 1px;
+    border-radius: 5px;
+
+`
+
+const FirstColumnWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-right: 1em;
+`
+
+const SecondColumnWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+`
+
+const AddressWrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+    
+`
+
 const ProductWrapper = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-items: center;
     margin-top: 3em;
-    margin-left: 1.8em;
 `
 
 const Title = styled.h1`
-    margin-left: 5.8em;
-    margin-top: 1em;
-    margin-bottom: 2.5em;
+    margin-top: 0.7em;
+    text-align: center;
 `
 
 const LeftColumn = styled.div`
     display: flex;
+    flex-direction: row;
     justify-items: flex-start;
 
 `
@@ -132,7 +258,7 @@ const RightColumn = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-end;
-    margin-left: 3.5em;
+    margin-right: -4.8em;
 `
 const TrashCan = styled(BiTrash)`
     font-size: 1.6em;
@@ -148,11 +274,11 @@ const ProductCategory = styled.p`
 
 const ProductTitle = styled.h2`
     width: 0em;
+    margin: 0;
 `
 
 const TitleWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
+    width: 0;
     margin-left: 1em;
 `
 
@@ -165,10 +291,13 @@ const BottomRow = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     justify-items: center;
+    margin-bottom: 5em;
 `
 
 const Cost = styled.p`
     margin-top: 2em;
+    font-size: 1.2em;
+    font-weight: bold;
 `
 
 const CartWrapper = styled.div`
@@ -179,13 +308,17 @@ const CartWrapper = styled.div`
 `
 
 const Line = styled.hr`
-    width: 60%;
+    width: 60vw;
     margin-left: auto;
     margin-right: auto;
     margin-top: 2.5em;
     border-top: 1px solid #373737;
     opacity: 20%;
 
+    @media screen and (max-width: 500px) {
+        width: 80vw;
+    }
+    
 `
 
 const Wrapper = styled.div`
@@ -193,5 +326,16 @@ const Wrapper = styled.div`
 `
 
 const EmptyCartText = styled.p`
-text-align:center;
+    text-align:center;
+    height: 50vh;
+`
+
+const TaxTitle = styled.p`
+    font-size: 0.7em;
+    margin-left: 2em;
+`
+
+const TaxCost = styled.p`
+    font-size: 0.7em;
+
 `

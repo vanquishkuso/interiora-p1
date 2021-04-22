@@ -5,11 +5,15 @@ import { FaBars } from 'react-icons/fa'
 import { MenuData } from '../data/MenuData'
 import { Button } from "./Button"
 import { FiShoppingCart, FiSearch } from 'react-icons/fi'
+import TransitionLink from "gatsby-plugin-transition-link"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 const Header = () => {
   return (
     <Nav>
-      <NavLink style={{ fontFamily: 'Poppins', fontSize: '2rem' }} to="/">Interiöra</NavLink>
+      <AniLink paintDrip to="/" duration={0.6} hex="#877D70" style={{ textDecoration: "none", margin: "0 auto" }}>
+        <Logo style={{ fontFamily: 'Poppins', fontSize: '2rem' }}>Interiöra</Logo>
+      </AniLink>
 
       <Bars />
 
@@ -21,8 +25,8 @@ const Header = () => {
 
       <CartWrapper>
         <Search />
-        <NavLink to="/varukorgen/">
-          <Cart />
+        <NavLink>
+          <AniLink paintDrip to="/varukorgen" duration={0.6} hex="#877D70"><Cart /></AniLink>
         </NavLink>
       </CartWrapper>
 
@@ -47,22 +51,41 @@ const Nav = styled.nav`
   position: relative;
 `
 
+const Logo = styled.div`
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0 1rem;
+  height: 100%;
+  cursor: pointer;
+  color: #373737;
+  text-decoration: none;
+
+  &:hover {
+    color: #877D70;
+    transition: 0.3s ease;
+  }
+
+  @media screen and (max-width: 768px) {
+    margin: 0 auto;
+  }
+`
+
 const NavLink = styled(Link)`
-color: #fff;
 display: flex;
 align-items: center;
 text-decoration: none;
 padding: 0 1rem;
 height: 100%;
 cursor: pointer;
-color: #373737;
+color: #877D70;
 
 @media screen and (max-width: 768px) {
     margin: 0 auto;
   }
 
   &:hover {
-        color: #877D70;
+        color: #373737;
         transition: 0.3s ease;
     }
 `
@@ -87,6 +110,11 @@ const Search = styled(FiSearch)`
   font-size: 1.8rem;
   cursor: pointer;
 
+  &:hover {
+      color: #373737;
+      transition: 0.3s ease;
+    }
+    
   @media screen and (max-width: 768px) {
   display: block;
   position: absolute;
@@ -102,6 +130,11 @@ const Cart = styled(FiShoppingCart)`
   color: #877D70;
   font-size: 1.8rem;
   cursor: pointer;
+
+  &:hover {
+      color: #373737;
+      transition: 0.3s ease;
+    }
 
   @media screen and (max-width: 768px) {
   display: block;

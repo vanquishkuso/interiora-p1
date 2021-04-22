@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Button } from './Button'
 import Picture from '../assets/images/hero1.jpg'
+import AnchorLink from 'react-anchor-link-smooth-scroll'
 
 const Hero = () => {
     return (
@@ -14,10 +15,11 @@ const Hero = () => {
                 <HeroItems>
                     <HeroH1>Interiöra</HeroH1>
                     <HeroP>Minimalism när den är som bäst</HeroP>
-                    <Button primary="true" big="true" round="true" to="/products">Till produkterna</Button>
+
+                    <AnchorLink href="#product-section"><Button primary="true" big="true" round="true">Till produkterna</Button></AnchorLink>
                 </HeroItems>
             </HeroContent>
-        </HeroContainer>
+        </HeroContainer >
     )
 }
 

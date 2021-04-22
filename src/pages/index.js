@@ -11,6 +11,7 @@ const pageQuery = graphql`
 {
     gcms {
         products {
+            id
             name
             slug
             price
@@ -32,7 +33,7 @@ const IndexPage = () => {
         <Layout>
             <SEO title="Interiöra" />
             <Hero />
-            <ProductsWrapper>
+            <ProductsWrapper id="product-section">
                 {products.map(({ slug, ...products }) => (
                     <Product>
                         <ImageWrapper>
