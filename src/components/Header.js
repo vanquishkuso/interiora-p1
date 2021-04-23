@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
 import styled from 'styled-components'
 import { FaBars } from 'react-icons/fa'
@@ -7,13 +7,27 @@ import { FiShoppingCart, FiSearch } from 'react-icons/fi'
 import { BsFillPersonFill } from "react-icons/bs"
 import TransitionLink from "gatsby-plugin-transition-link"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
+import SearchContainer from "./SearchContainer"
+import ProductData from "../data/ProductList"
+import SearchPage from "./SearchPage"
 
 const Header = () => {
+
+  const [show, setShow] = useState(false)
+
+  const searchClick = () => {
+    setShow(hide => !hide)
+    console.log("clicked")
+    console.log(show)
+  }
+
   return (
     <Nav>
       <AniLink paintDrip to="/" duration={0.6} hex="#877D70" style={{ textDecoration: "none", margin: "0 auto" }}>
         <Logo style={{ fontFamily: 'Poppins', fontSize: '2rem' }}>Interiöra</Logo>
       </AniLink>
+
+
 
       <Bars />
 
@@ -24,7 +38,13 @@ const Header = () => {
       </NavMenu>
 
       <CartWrapper>
-        <Search />
+
+        <SearchClickable onClick={searchClick}>
+          <Search />
+        </SearchClickable>
+
+        {show ? <SearchPage styles={{ marginTop: "5em" }} /> : null}
+
         <NavLink>
           <AniLink paintDrip to="/mitt-konto" duration={0.6} hex="#877D70"><Account /></AniLink>
         </NavLink>
@@ -118,7 +138,6 @@ const Bars = styled(FaBars)`
 const Search = styled(FiSearch)`
   color: #877D70;
   font-size: 1.8rem;
-  cursor: pointer;
 
   &:hover {
       color: #373737;
@@ -132,8 +151,11 @@ const Search = styled(FiSearch)`
   right: 0;
   transform: translate(-300%, 95%);
   font-size: 1.8rem;
-  cursor: pointer;
 }
+`
+
+const SearchClickable = styled.div`
+  cursor: pointer;
 `
 
 const Cart = styled(FiShoppingCart)`

@@ -29,6 +29,8 @@ const pageQuery = graphql`
 const IndexPage = () => {
     const { gcms: { products } } = useStaticQuery(pageQuery)
 
+    localStorage.setItem("allProducts", JSON.stringify(products))
+
     return (
         <Layout>
 
@@ -36,6 +38,7 @@ const IndexPage = () => {
             <Hero title={"Interiöra"} paragraph={"Minimalism när den är som bäst"} />
             <ProductsWrapper id="product-section">
                 {products.map(({ slug, ...products }) => (
+
                     <Product>
                         <ImageWrapper>
                             <ImageLink to={`/produkt/${slug}`}>
