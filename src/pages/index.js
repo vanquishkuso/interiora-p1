@@ -6,7 +6,6 @@ import SEO from '../components/Seo'
 import Hero from '../components/Hero'
 import { Button } from '../components/Button'
 import AddToCartButton from '../components/AddToCartButton'
-import PicturePath from './hero1.jpeg'
 import Lampor from '../assets/images/Lampor.jpg'
 
 const pageQuery = graphql`
@@ -34,7 +33,7 @@ const IndexPage = () => {
         <Layout>
 
             <SEO title="Interiöra" />
-            <Hero title={"Interiöra"} paragraph={"Minimalism när den är som bäst"} picture={PicturePath} />
+            <Hero title={"Interiöra"} paragraph={"Minimalism när den är som bäst"} />
             <ProductsWrapper id="product-section">
                 {products.map(({ slug, ...products }) => (
                     <Product>
@@ -83,6 +82,7 @@ const ProductsWrapper = styled.div`
 
     @media screen and (max-width: 500px) {
     grid-template-columns: 1fr 1fr;
+    text-align: center;
     padding: 1rem;
 }
 `

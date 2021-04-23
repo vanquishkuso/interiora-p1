@@ -3,8 +3,8 @@ import { Link } from "gatsby"
 import styled from 'styled-components'
 import { FaBars } from 'react-icons/fa'
 import { MenuData } from '../data/MenuData'
-import { Button } from "./Button"
 import { FiShoppingCart, FiSearch } from 'react-icons/fi'
+import { BsFillPersonFill } from "react-icons/bs"
 import TransitionLink from "gatsby-plugin-transition-link"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 
@@ -26,15 +26,19 @@ const Header = () => {
       <CartWrapper>
         <Search />
         <NavLink>
+          <AniLink paintDrip to="/mitt-konto" duration={0.6} hex="#877D70"><Account /></AniLink>
+        </NavLink>
+        <NavLink>
           <AniLink paintDrip to="/varukorgen" duration={0.6} hex="#877D70"><Cart /></AniLink>
         </NavLink>
       </CartWrapper>
-
+      {/*
       <NavBtn>
         <Button primary="true" round="true" to="/aterforsaljare">
           Köp här
           </Button>
-      </NavBtn>
+        </NavBtn>
+*/ }
     </Nav>
   )
 }
@@ -66,7 +70,7 @@ const Logo = styled.div`
     transition: 0.3s ease;
   }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1085px) {
     margin: 0 auto;
   }
 `
@@ -80,7 +84,7 @@ height: 100%;
 cursor: pointer;
 color: #877D70;
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1085px) {
     margin: 0 auto;
   }
 
@@ -91,10 +95,15 @@ color: #877D70;
 `
 
 const Bars = styled(FaBars)`
-display: none;
-color: #373737;
+  display: none;
+  color: #877D70;
+ 
+  &:hover {
+    color: #373737;
+    transition: 0.3s ease;
+}
 
-@media screen and (max-width: 768px) {
+  @media screen and (max-width: 1085px) {
   display: block;
   position: absolute;
   top: 0;
@@ -103,6 +112,7 @@ color: #373737;
   font-size: 1.8rem;
   cursor: pointer;
 }
+
 `
 
 const Search = styled(FiSearch)`
@@ -115,7 +125,7 @@ const Search = styled(FiSearch)`
       transition: 0.3s ease;
     }
     
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1085px) {
   display: block;
   position: absolute;
   top: 0;
@@ -136,7 +146,7 @@ const Cart = styled(FiShoppingCart)`
       transition: 0.3s ease;
     }
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1085px) {
   display: block;
   position: absolute;
   top: 0;
@@ -147,6 +157,21 @@ const Cart = styled(FiShoppingCart)`
 }
 `
 
+const Account = styled(BsFillPersonFill)`
+  color: #877D70;
+  font-size: 1.8rem;
+  cursor: pointer;
+  margin-left: 0.5em;
+  &:hover {
+      color: #373737;
+      transition: 0.3s ease;
+    }
+
+  @media screen and (max-width: 1085px) {
+  display: none;
+  }
+`
+
 const CartWrapper = styled.div`
   width: 200px;
   display: flex;
@@ -154,7 +179,7 @@ const CartWrapper = styled.div`
   align-items: center;
   justify-content: space-evenly;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1085px) {
     width: auto;
   }
 `
@@ -164,7 +189,7 @@ const NavMenu = styled.div`
   align-items: center;
   margin-right: 0px;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1085px) {
     display: none;
   }
 `
@@ -174,7 +199,7 @@ const NavBtn = styled.div`
   align-items: center;
   margin-right: 24px;
 
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1085px) {
     display: none;
   }
 `

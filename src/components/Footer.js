@@ -8,29 +8,32 @@ const Footer = () => {
             <FooterLinksWrapper>
                 <FooterDesc>
                     <h1>Interiöra</h1>
-                    <p>We strive to create the best experiences for our customers</p>
+                    <p>Minimalism när den är som bäst</p>
                 </FooterDesc>
                 <FooterLinkItems>
-                    <FooterLinkTitle>Contact Us</FooterLinkTitle>
-                    <FooterLink to="/about">Contact</FooterLink>
-                    <FooterLink to="/about">Support</FooterLink>
-                    <FooterLink to="/about">Destination</FooterLink>
+                    <FooterLinkTitle>Produkter</FooterLinkTitle>
+                    <FooterLink to="/kategori/bord">Bord</FooterLink>
+                    <FooterLink to="/kategori/dekoration">Dekoration</FooterLink>
+                    <FooterLink to="/kategori/fatoljer">Fåtöljer</FooterLink>
+                    <FooterLink to="/kategori/lampor">Lampor</FooterLink>
+                    <FooterLink to="/kategori/matsalsgrupper">Matsalsgrupper</FooterLink>
+                    <FooterLink to="/kategori/stolar">Stolar</FooterLink>
+                    <FooterLink to="/kategori/soffor">Soffor</FooterLink>
+                    <FooterLink to="/kategori/sangar">Sängar</FooterLink>
                 </FooterLinkItems>
             </FooterLinksWrapper>
             <FooterLinksWrapper>
                 <FooterLinkItems>
-                    <FooterLinkTitle>Products</FooterLinkTitle>
-                    <FooterLink to="/about">C-Series</FooterLink>
-                    <FooterLink to="/about">J-Series</FooterLink>
-                    <FooterLink to="/about">WS-Series</FooterLink>
-                    <FooterLink to="/about">Nano</FooterLink>
-                    <FooterLink to="/about">DOT</FooterLink>
+                    <FooterLinkTitle>Vilka är vi</FooterLinkTitle>
+                    <FooterLink to="/about">Om Interiöra</FooterLink>
+                    <FooterLink to="/about">Våra butiker</FooterLink>
+                    <FooterLink to="/about">Karriär</FooterLink>
+                    <FooterLink to="/about">Integritetspolicy</FooterLink>
                 </FooterLinkItems>
                 <FooterLinkItems>
-                    <FooterLinkTitle>Social Media</FooterLinkTitle>
-                    <FooterLink to="/about">Contact</FooterLink>
-                    <FooterLink to="/about">Support</FooterLink>
-                    <FooterLink to="/about">Destination</FooterLink>
+                    <FooterLinkTitle>Om webbplatsen</FooterLinkTitle>
+                    <FooterLink to="/about">Om cookies</FooterLink>
+                    <FooterLink to="/about">Användarvillkor</FooterLink>
                 </FooterLinkItems>
             </FooterLinksWrapper>
         </FooterContainer>

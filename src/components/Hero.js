@@ -2,31 +2,65 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { Button } from './Button'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
-import Lampor from '../assets/images/Lampor.jpg'
-import Bord from '../assets/images/Bord.jpg'
 import Hero1 from '../assets/images/hero1.jpg'
+import Lampor from '../assets/images/Lampor.jpg'
+import Stolar from '../assets/images/Stolar.jpg'
+import Bord from '../assets/images/Bord.jpg'
+import Matsalsgrupper from '../assets/images/Matsalsgrupper.jpg'
+import Sängar from '../assets/images/Sängar.jpg'
+import Soffor from '../assets/images/Soffor.jpg'
+import Fåtöljer from '../assets/images/Fåtöljer.jpg'
+import Dekoration from '../assets/images/Dekoration.jpg'
 
 
 const Hero = ({ title, paragraph, picture }) => {
 
-    const [picState, setPicState] = useState(categoryTitle)
+    const [picState, setPicState] = useState(document.title)
+    const [hero, setHero] = useState(categoryTitle)
     const [pic, setPic] = useState()
     const getSiteTitle = document.title
     const categoryTitle = getSiteTitle.substr(0, getSiteTitle.indexOf(" "))
-    console.log(document.title.substr(0, getSiteTitle.indexOf(" ")))
-    console.log(getSiteTitle)
-
-
+    const url = window.location.href
+    const checkUrl = url.split("/")[4]
 
     useEffect(() => {
-        if (categoryTitle === "Bord") {
+        console.log(checkUrl)
+        if (checkUrl === undefined) {
+            setPic(<ImgBg src={Hero1} />)
+        }
+
+        if (checkUrl === "lampor") {
             setPic(<ImgBg src={Lampor} />)
         }
-        if (getSiteTitle === "Lampor") {
+
+        if (checkUrl === "stolar") {
+            setPic(<ImgBg src={Stolar} />)
+        }
+
+        if (checkUrl === "bord") {
             setPic(<ImgBg src={Bord} />)
         }
 
-    }, [picState])
+        if (checkUrl === "matsalsgrupper") {
+            setPic(<ImgBg src={Matsalsgrupper} />)
+        }
+
+        if (checkUrl === "sangar") {
+            setPic(<ImgBg src={Sängar} />)
+        }
+
+        if (checkUrl === "soffor") {
+            setPic(<ImgBg src={Soffor} />)
+        }
+
+        if (checkUrl === "fatoljer") {
+            setPic(<ImgBg src={Fåtöljer} />)
+        }
+
+        if (checkUrl === "dekoration") {
+            setPic(<ImgBg src={Dekoration} />)
+        }
+    }, [checkUrl])
 
     return (
         <HeroContainer>
