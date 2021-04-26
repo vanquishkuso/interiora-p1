@@ -49,7 +49,7 @@ const AddToCartButton = ({ product }) => {
 
             }}>{clickedItem == product.id && isClicked ?
                 <div><Loader type="Oval" color="#cccccc" height={30} width={30} /></div> : <p style={{ marginBottom: "5px", marginTop: "5px" }}>KÖP</p>}</Button>
-
+            <button onClick={() => localStorage.clear()}>Clear</button>
         </div>
     )
 }

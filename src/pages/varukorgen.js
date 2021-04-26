@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import Layout from '../components/Layout'
 import SEO from '../components/Seo'
-import { BiTrash } from 'react-icons/bi'
+import { BiAlarm, BiTrash } from 'react-icons/bi'
 import { Button } from '../components/Button'
 import TransitionLink from "gatsby-plugin-transition-link"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
@@ -25,7 +25,6 @@ const CartPage = () => {
             sum += parseInt(filtered[i].price)
         }
         setCartCost(sum)
-
     }
 
     const addItem = (price) => {
@@ -39,8 +38,27 @@ const CartPage = () => {
         console.log(tax)
     }
 
+    const randomDate = (start, end) => {
+        return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+    }
+
+    const sendOrder = () => {
+        let order = [{
+            orderId: Math.floor((Math.random() * 100)),
+            orderPrice: cartCost,
+            orderDate: new Date().toISOString().slice(0, 10),
+            deliveryDate: randomDate(new Date(2021, 5, 1), new Date(2021, 6, 1)).toISOString().slice(0, 10)
+        }]
+
+        var a = [];
+        a = JSON.parse(localStorage.getItem("orderHistory")) || [];
+        a.push(order);
+        localStorage.setItem("orderHistory", JSON.stringify(a))
+        localStorage.removeItem("products")
+    }
+
     useEffect(() => {
-        let fetchData;
+        let fetchData
         if (getCart === null || getCart.length === 0) {
             fetchData = (
                 <EmptyCartText>Din varukorg är tom</EmptyCartText>
@@ -131,8 +149,8 @@ const CartPage = () => {
                    Telefonnummer <Phone />
 
                 <ButtonWrapper>
-                    <AniLink paintDrip to="/bekraftelse" duration={0.6} hex="#877D70" style={{ textDecoration: "none", margin: "0 auto" }}>
-                        <Button big="false" round="true">Beställ</Button>
+                    <AniLink onClick={() => sendOrder()} paintDrip to="/bekraftelse" duration={0.6} hex="#877D70" style={{ textDecoration: "none", margin: "0 auto" }}>
+                        <Button big="false" round="true" > Beställ</Button>
                     </AniLink>
                 </ButtonWrapper>
             </FormWrapper> : null}
@@ -245,6 +263,10 @@ const ProductWrapper = styled.div`
 const Title = styled.h1`
     margin-top: 0.7em;
     text-align: center;
+    margin-bottom: 1.5rem;
+    letter-spacing: 3px;
+    font-weight: bold;
+    padding: 0 1rem;
 `
 
 const LeftColumn = styled.div`
