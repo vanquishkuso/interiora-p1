@@ -25,6 +25,7 @@ const Footer = () => {
             <FooterLinksWrapper>
                 <FooterLinkItems>
                     <FooterLinkTitle>Vilka är vi</FooterLinkTitle>
+                    <FooterLink to="/kontakta-oss">Kontakta oss</FooterLink>
                     <FooterLink to="/about">Om Interiöra</FooterLink>
                     <FooterLink to="/about">Våra butiker</FooterLink>
                     <FooterLink to="/about">Karriär</FooterLink>

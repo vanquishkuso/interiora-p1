@@ -99,6 +99,7 @@ const AccountPage = () => {
                     <MenuItem onClick={(data) => handleClick("orders")} style={{ backgroundColor: toggle === "orders" ? "#373737" : null, }}>Mina beställningar</MenuItem>
                     <MenuItem onClick={(data) => handleClick("payment")} style={{ backgroundColor: toggle === "payment" ? "#373737" : null }}>Betalning</MenuItem>
                     <MenuItem onClick={(data) => handleClick("settings")} style={{ backgroundColor: toggle === "settings" ? "#373737" : null }}>Inställningar</MenuItem>
+                    <button onClick={() => localStorage.clear()}>Töm orderhistorik</button>
                 </LeftColumn>
                 <RightColumn>
 
