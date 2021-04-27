@@ -9,11 +9,11 @@ const ProductList = ({ input, productList = [] }) => {
         search = productList.map((data, index) => {
             if (data) {
                 return (
-                    <SearchList key={data.name} to={`/produkt/${data.slug}`}>
+                    <SearchList key={data.name}>
                         <LeftColumn>
-                            <ItemLink to={`/produkt/${data.slug}`}>
-                                <ItemImage src={data.images[0].url} alt="" />
-                            </ItemLink>
+                            {/*<ItemLink to={`/produkt/${data.slug}`}>
+                                <ItemImage src={data.images[0].url} />
+                            </ItemLink>*/}
                             <TitleWrapper>
                                 <SearchItem to={`/produkt/${data.slug}`}>{data.name}</SearchItem>
                                 <p>{data.categories[0].name}</p>
@@ -36,41 +36,19 @@ const ProductList = ({ input, productList = [] }) => {
 }
 
 const SearchWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: calc(100% + 88px);
-    left: 0;
-    right: 0;
-    border-radius: 5px;
-`
-
-const SearchList = styled(Link)`
-
-    width: 95%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row;
-    background-color: #fff;
-    margin-bottom: 0em;
-    border-top: 1px solid #dbdbdb;
-    padding: 1em;
-    cursor: pointer;
-    text-decoration: none;
-    color: #373737;
-    transition: 0.3s ease;
-    filter: brightness(90%);
-&:hover {
-    filter: brightness(100%);
-}
 
 `
 
-const SearchItem = styled.div`
+const SearchList = styled.div`
+   // display: flex;
+   // flex-direction: row;
+   // background-color: #fff;
+`
+
+const SearchItem = styled(Link)`
     text-decoration: none;
     color: #373737;
     font-weight: bold;
-    cursor: pointer;
     transition: 0.3s ease;
     &:hover {
         color: #877D70;
@@ -78,9 +56,9 @@ const SearchItem = styled.div`
 `
 
 const ItemImage = styled.img`
-    width: 100px;
-    height: auto;
-    border-radius: 5px;
+  //  width: 100px;
+//
+  //  border-radius: 5px;
 
 `
 
@@ -94,18 +72,19 @@ const ItemLink = styled(Link)`
 `
 
 const LeftColumn = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-items: flex-start;
+   // display: flex;
+   // flex-direction: row;
+   // justify-items: flex-start;
 
 `
 
 const TitleWrapper = styled.div`
-    margin-left: 1em;
+
+
 `
 
 const RightColumn = styled.div`
-    margin-left: 0.7em;
+
 `
 
 export default ProductList

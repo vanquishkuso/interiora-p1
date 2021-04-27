@@ -72,7 +72,6 @@ const ProductsWrapper = styled.div`
     margin: 0 auto;
 
     @media screen and (max-width: 500px) {
-        height: 80vh;
         grid-gap: 0em;
         padding: 1em;
         flex-direction: column;
@@ -86,10 +85,11 @@ const ImageColumn = styled.div`
 `
 
 const TitelColumn = styled.div`
-width: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     padding: 1em;
+    justify-items: flex-start;
 `
 
 const ProductTitle = styled.h1`

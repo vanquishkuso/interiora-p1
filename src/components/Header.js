@@ -10,6 +10,7 @@ import AniLink from "gatsby-plugin-transition-link/AniLink"
 import SearchContainer from "./SearchContainer"
 import ProductData from "../data/ProductList"
 import SearchPage from "./SearchPage"
+import { AiOutlineClose } from "react-icons/ai"
 
 const Header = () => {
 
@@ -17,6 +18,7 @@ const Header = () => {
 
   const searchClick = () => {
     setShow(hide => !hide)
+    localStorage.setItem("search", show)
     console.log("clicked")
     console.log(show)
   }
@@ -43,7 +45,7 @@ const Header = () => {
           <Search />
         </SearchClickable>
 
-        {show ? <SearchPage styles={{ marginTop: "5em" }} /> : null}
+        {show ? <div><SearchPage /><CloseIcon onClick={searchClick} /></div> : null}
 
         <NavLink>
           <AniLink paintDrip to="/mitt-konto" duration={0.6} hex="#877D70"><Account /></AniLink>
@@ -156,6 +158,7 @@ const Search = styled(FiSearch)`
 
 const SearchClickable = styled.div`
   cursor: pointer;
+  
 `
 
 const Cart = styled(FiShoppingCart)`
@@ -224,4 +227,18 @@ const NavBtn = styled.div`
   @media screen and (max-width: 1085px) {
     display: none;
   }
+`
+
+const CloseIcon = styled(AiOutlineClose)`
+    position: absolute;
+    top: calc(100% + 28px);
+    right: 0;
+    margin-right: 0.9em;
+    color: #877D70;
+    font-size: 1.8rem;
+    cursor: pointer;
+  &:hover {
+      color: #373737;
+      transition: 0.3s ease;
+    }
 `
