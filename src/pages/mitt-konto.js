@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Layout from '../components/Layout'
 import styled from "styled-components"
+import Button from "../components/Button"
 
 const AccountPage = () => {
 
@@ -62,7 +63,7 @@ const AccountPage = () => {
 
                                 <OrderPrice>
                                     <OrderHeader>Ordervärde</OrderHeader>
-                                    <OrderItem>{data[0].orderPrice}</OrderItem>
+                                    <OrderItem>{data[0].orderPrice} kr</OrderItem>
                                 </OrderPrice>
 
                             </OrderItemWrapper>
@@ -100,6 +101,7 @@ const AccountPage = () => {
                     <MenuItem onClick={(data) => handleClick("payment")} style={{ backgroundColor: toggle === "payment" ? "#373737" : null }}>Betalning</MenuItem>
                     <MenuItem onClick={(data) => handleClick("settings")} style={{ backgroundColor: toggle === "settings" ? "#373737" : null }}>Inställningar</MenuItem>
                     <button onClick={() => localStorage.clear()}>Töm orderhistorik</button>
+
                 </LeftColumn>
                 <RightColumn>
 
@@ -107,7 +109,6 @@ const AccountPage = () => {
                     <Paragraph>
                         {activeText}
                     </Paragraph>
-
                 </RightColumn>
             </Wrapper>
         </Layout >

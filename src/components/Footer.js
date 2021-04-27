@@ -26,15 +26,16 @@ const Footer = () => {
                 <FooterLinkItems>
                     <FooterLinkTitle>Vilka är vi</FooterLinkTitle>
                     <FooterLink to="/kontakta-oss">Kontakta oss</FooterLink>
-                    <FooterLink to="/about">Om Interiöra</FooterLink>
-                    <FooterLink to="/about">Våra butiker</FooterLink>
-                    <FooterLink to="/about">Karriär</FooterLink>
-                    <FooterLink to="/about">Integritetspolicy</FooterLink>
+                    <FooterLink to="/om-interiora">Om Interiöra</FooterLink>
+                    <FooterLink to="/vara-butiker">Våra butiker</FooterLink>
+                    <FooterLink to="/karriar">Karriär</FooterLink>
+                    <FooterLink to="/vanliga-fragor">Vanliga frågor</FooterLink>
                 </FooterLinkItems>
                 <FooterLinkItems>
                     <FooterLinkTitle>Om webbplatsen</FooterLinkTitle>
-                    <FooterLink to="/about">Om cookies</FooterLink>
-                    <FooterLink to="/about">Användarvillkor</FooterLink>
+                    <FooterLink to="/integritetspolicy">Integritetspolicy</FooterLink>
+                    <FooterLink to="/om-cookies">Om cookies</FooterLink>
+                    <FooterLink to="/anvandarvillkor">Användarvillkor</FooterLink>
                 </FooterLinkItems>
             </FooterLinksWrapper>
         </FooterContainer>

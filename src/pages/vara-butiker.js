@@ -1,32 +1,35 @@
 import React from 'react'
 import Layout from '../components/Layout'
 import styled from "styled-components"
-import Picture from "../assets/images/kontakta-oss-1.jpg"
+import Picture from "../assets/images/vara-butiker-1.jpg"
+import { ShopData } from "../data/ShopData"
 
-
-const ContactPage = () => {
+const ShopPage = () => {
     return (
         <Layout>
 
-            <Title>Kontakta oss</Title>
+            <Title>Våra butiker</Title>
             <Wrapper>
                 <LeftColumn>
                     <IMG src={Picture} alt="" />
                 </LeftColumn>
 
                 <RightColumn>
-                    <p>Har du allmänna frågor eller funderingar kring vårt företag eller våra produkter? Har du ett önskemål om en produkt du vill att vi ska ta in i sortimentet? Skicka i så fall ett mejl till mejladressen nedan eller ring nedanstående telefonnummer:</p>
-                    <ContactWrapper>
-                        <a href="mailto:hej@interiora.com">hej@interiora.com</a>
-                        <Paragraph href="tel:123-456-7890">+46 70 111 11 11</Paragraph>
-                    </ContactWrapper>
+                    <ColumnTitle>Öppettider i samtliga butiker:</ColumnTitle>
 
-                    <p>Har du synpunkter gällande en specifik produkt, beställning eller vill göra en reklamation? Kontakta oss i så fall genom att skicka ett mejl till mejladressen nedan eller ring nedanstående telefonnummer:</p>
+                    <Text>Måndag - Fredag 09.00 - 18.00</Text>
+                    <Text>Lördag 10.00 - 18.00</Text>
+                    <Text>Söndag 10.00 - 16.00</Text>
 
-                    <ContactWrapper>
-                        <a href="mailto:support@interiora.com">support@interiora.com</a>
-                        <Paragraph href="tel:123-456-7890">+46 70 111 11 22</Paragraph>
-                    </ContactWrapper>
+                    <Text style={{ marginTop: "3em", marginBottom: "0em" }}>Här nedan hittar du alla våra butiker i Sverige:</Text>
+                    <List>
+                        {ShopData.map((data, i) => (
+                            <div style={{ marginBottom: "0.3em" }}>
+                                <h4>{data.city}</h4>
+                                <li>{data.address}</li>
+                            </div>
+                        ))}
+                    </List>
                 </RightColumn>
             </Wrapper>
         </Layout>
@@ -40,8 +43,6 @@ const Wrapper = styled.div`
     margin-top: 3em;
     justify-content: center;
     justify-items: center;
-    align-content: center;
-    align-items: center;
     margin-bottom: 5em;
 
     @media screen and (max-width: 500px) {
@@ -56,7 +57,7 @@ const Wrapper = styled.div`
 const Title = styled.h1`
     margin-top: 0.7em;
     text-align: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     letter-spacing: 3px;
     font-weight: bold;
     padding: 0 1rem;
@@ -67,7 +68,7 @@ const LeftColumn = styled.div`
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    margin-left: 5em;
+    margin-right: 0em;
        p {
             text-align: left;
             margin-bottom: 2rem;
@@ -89,7 +90,6 @@ const LeftColumn = styled.div`
            margin: 0 auto;
            margin-bottom: 0em;
            justify-content: center;
-           align-items: center;
        }
 `
 
@@ -100,12 +100,9 @@ const RightColumn = styled.div`
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
-    margin-left: 5em;
+    padding-left: 6em;
        p {
-        width: 80%;
-        text-align: left;
-        margin-bottom: 2rem;
-        font-weight: 400;
+
        }
        a {
         text-decoration: none;
@@ -122,6 +119,7 @@ const RightColumn = styled.div`
            width: 100%;
            margin: 0 auto;
            margin-bottom: 3em;
+           padding: 0;
            align-items: center;
        }
 `
@@ -135,20 +133,26 @@ const IMG = styled.img`
        }
 `
 
-const ContactWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
+const ColumnTitle = styled.h3`
+   text-align: left;
+`
+
+const Text = styled.p`
+    text-align: left;
     
-        @media screen and (max-width: 500px) {
+    @media screen and (max-width: 500px) {
+        width: 80%;
         text-align: center;
-        margin: 0 auto;
-       }
+    }
 `
 
-const Paragraph = styled.a`
-    text-align: center;
-    margin-top: -1.5em;
+const List = styled.ul`
+    list-style-type: none;
+    text-align: left;
+       
+    @media screen and (max-width: 500px) {
+        padding: 2em;
+    }
 `
 
-
-export default ContactPage;
+export default ShopPage;
