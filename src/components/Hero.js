@@ -15,7 +15,6 @@ import Dekoration from '../assets/images/Dekoration.jpg'
 
 const Hero = ({ title, paragraph, picture }) => {
 
-    const [hero, setHero] = useState(categoryTitle)
     const [pic, setPic] = useState()
     const getSiteTitle = document.title
     const categoryTitle = getSiteTitle.substr(0, getSiteTitle.indexOf(" "))
