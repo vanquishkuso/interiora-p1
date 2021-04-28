@@ -74,19 +74,17 @@ const IndexPage = () => {
 export default IndexPage
 
 const ProductsWrapper = styled.div`
-    
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     padding: 1em;
-
     margin-top: 1em;
-
     transition: 0.3s ease;
 
     @media screen and (max-width: 500px) {
     grid-template-columns: 1fr 1fr;
     text-align: center;
-    padding: 1rem;
+    padding: 0;
+    
 }
 `
 
@@ -99,6 +97,10 @@ const Product = styled.div`
     transition: 0.3s ease;
 
     @media screen and (max-width: 500px) {
+        padding: 0;
+        width: 85%;
+        margin-left: auto;
+        margin-right: auto;
         margin-bottom: 2em;
 }
 `
