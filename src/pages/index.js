@@ -37,9 +37,10 @@ const IndexPage = () => {
             <SEO title="Interiöra" />
             <Hero title={"Interiöra"} paragraph={"Minimalism när den är som bäst"} />
             <ProductsWrapper id="product-section">
-                {products.map(({ slug, ...products }) => (
+                {products.map(({ slug, ...products }, i) => (
 
                     <Product>
+
                         <ImageWrapper>
                             <ImageLink to={`/produkt/${slug}`}>
                                 <img
@@ -65,6 +66,7 @@ const IndexPage = () => {
                             <AddToCartButton product={products} />
                         </ButtonWrapper>
                     </Product>
+
                 ))}
             </ProductsWrapper>
         </Layout>

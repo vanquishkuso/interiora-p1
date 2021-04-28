@@ -46,18 +46,18 @@ const Header = () => {
         <MobileMenuCloseIcon onClick={menuClick} />
         <MobileMenu>
 
-          <h2 style={{ marginBottom: "1em" }}>Produkter</h2>
+          <h2 style={{ marginTop: "0em", marginBottom: "0em" }}>Produkter</h2>
           {MenuData.map((item, index) => (
             <MobileNavLink to={item.link} key={index}>{item.title}</MobileNavLink>
           ))}
 
-          <h2 style={{ marginTop: "2em", marginBottom: "1em" }}>Vilka är vi</h2>
+          <h2 style={{ marginTop: "1.5em", marginBottom: "0em" }}>Vilka är vi</h2>
           <MobileNavLink to={"/kontakta-oss"} key={"kontakta-oss"}>Kontakta oss</MobileNavLink>
           <MobileNavLink to={"/om-interiora"} key={"om-interiora"}>Om interiöra</MobileNavLink>
           <MobileNavLink to={"/vara-butiker"} key={"vara-butiker"}>Våra butiker</MobileNavLink>
           <MobileNavLink to={"/karriar"} key={"karriar"}>Karriär</MobileNavLink>
 
-          <h2 style={{ marginTop: "2em", marginBottom: "1em" }}>Om webbplatsen</h2>
+          <h2 style={{ marginTop: "1.5em", marginBottom: "0em" }}>Om webbplatsen</h2>
           <MobileNavLink to={"/integritetspolicy"} key={"integritetspolicy"}>Integritetspolicy</MobileNavLink>
           <MobileNavLink to={"/om-cookies"} key={"om-cookies"}>Om cookies</MobileNavLink>
           <MobileNavLink to={"/anvandarvillkor"} key={"anvandarvillkor"}>Användarvillkor</MobileNavLink>
@@ -309,7 +309,7 @@ const MobileNavLink = styled(Link)`
  // z-index: 999;
   text-decoration: none;
   padding: 0;
-  height: 3%;
+  height: 3.9%;
   cursor: pointer;
   color: #877D70;
   font-size: 1.2em;
