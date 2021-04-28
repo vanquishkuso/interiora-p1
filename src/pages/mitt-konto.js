@@ -1,18 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import Layout from '../components/Layout'
 import styled from "styled-components"
 import Button from "../components/Button"
+import { StateContext } from '../providers/StateProvider'
 
 const AccountPage = () => {
 
-    const [getCart, setGetCart] = useState([])
-    const [getOrderData, setOrderData] = useState([])
+    const [getCart, setGetCart] = useState()
+    const [orderData, setOrderData] = useState([])
     const [order, setOrder] = useState()
     const [activeText, setActiveText] = useState("")
-    const [toggle, setToggle] = useState("orders")
+    const [toggle, setToggle] = useState("payment")
     const [activeColor, setActiveColor] = useState("#877D70")
     const [orderDate, setOrderDate] = useState()
     // let cart = JSON.parse(localStorage.getItem("order"))
+    const { message, setMessage } = useContext(StateContext)
     let cartHistory = []
 
     const data = [
@@ -28,9 +30,10 @@ const AccountPage = () => {
     }
 
     useEffect(() => {
-        setGetCart(JSON.parse(localStorage.getItem("order")))
         setOrderData(JSON.parse(localStorage.getItem("orderHistory")))
-    }, [])
+        setGetCart(JSON.parse(localStorage.getItem("order")))
+    }, [message])
+
 
     useEffect(() => {
         const randomDate = (start, end) => {
@@ -39,13 +42,13 @@ const AccountPage = () => {
 
         let fetchOrderData
 
-        if (toggle === "orders" && getOrderData === null || undefined) {
+        if (toggle === "orders" && orderData === null || undefined) {
             fetchOrderData = data[0].order
             setActiveColor("#373737")
         }
-        if (toggle === "orders" && getOrderData !== null) {
+        if (toggle === "orders" && orderData !== null) {
             fetchOrderData = (
-                getOrderData.map((data, i) => {
+                orderData.map((data, i) => {
                     { console.log(data) }
                     return (
                         <OrderWrapper>
@@ -100,8 +103,8 @@ const AccountPage = () => {
             <Title>Mitt konto</Title>
             <Wrapper>
                 <LeftColumn>
-                    <MenuItem onClick={(data) => handleClick("orders")} style={{ backgroundColor: toggle === "orders" ? "#373737" : null, }}>Mina beställningar</MenuItem>
                     <MenuItem onClick={(data) => handleClick("payment")} style={{ backgroundColor: toggle === "payment" ? "#373737" : null }}>Betalning</MenuItem>
+                    <MenuItem onClick={(data) => handleClick("orders")} style={{ backgroundColor: toggle === "orders" ? "#373737" : null, }}>Mina beställningar</MenuItem>
                     <MenuItem onClick={(data) => handleClick("settings")} style={{ backgroundColor: toggle === "settings" ? "#373737" : null }}>Inställningar</MenuItem>
                     <button onClick={() => localStorage.clear()}>Töm orderhistorik</button>
 
