@@ -34,7 +34,7 @@ const AddToCartButton = ({ product }) => {
 
     return (
         <div>
-            <Button primary={true} round={true} onClick={(e, i) => {
+            <Button primary={true} round={false} onClick={(e, i) => {
                 handleAddToCart(e)
                 addToCart(
                     {

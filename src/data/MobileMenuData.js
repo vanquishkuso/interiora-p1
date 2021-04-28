@@ -8,5 +8,4 @@ export const MenuData = [
     { title: "Soffor", link: "/kategori/soffor" },
     { title: "Fåtöljer", link: "/kategori/fatoljer" },
     { title: "Dekoration", link: "/kategori/dekoration" },
-
 ]

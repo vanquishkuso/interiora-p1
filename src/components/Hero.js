@@ -69,7 +69,7 @@ const Hero = ({ title, paragraph }) => {
                     <HeroH1>{title}</HeroH1>
                     <HeroP>{paragraph}</HeroP>
 
-                    <AnchorLink href="#product-section"><Button primary="true" big="true" round="true">Till produkterna</Button></AnchorLink>
+                    { /*   <AnchorLink href="#product-section"><Button primary="true" big="true" round="true">Till produkterna</Button></AnchorLink> */}
                 </HeroItems>
             </HeroContent>
         </HeroContainer >
@@ -83,7 +83,7 @@ const HeroContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 40vh;
     padding: 0 1rem; 
     position: relative;
     margin-top: -80px;
@@ -139,6 +139,7 @@ const HeroItems = styled.div`
     text-align: center;
     height: 100vh;
     max-height: 100%;
+    margin-top: 2.5em;
     padding: 0;
     color: #fff;
     line-height: 1.1;
