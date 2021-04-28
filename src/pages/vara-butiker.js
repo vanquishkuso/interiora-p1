@@ -64,11 +64,10 @@ const Title = styled.h1`
 `
 
 const LeftColumn = styled.div`
-    width: 80%;
+    width: 50%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    margin-right: 0em;
        p {
             text-align: left;
             margin-bottom: 2rem;
@@ -94,16 +93,13 @@ const LeftColumn = styled.div`
 `
 
 const RightColumn = styled.div`
-    width: 80%;
+    width: 50%;
     text-align: center;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     flex-direction: column;
-    padding-left: 6em;
-       p {
 
-       }
        a {
         text-decoration: none;
         text-align: left;
@@ -125,7 +121,7 @@ const RightColumn = styled.div`
 `
 
 const IMG = styled.img`
-    width: 70%;
+    width: 80%;
     border-radius: 5px;
     margin-bottom: 1em;
     @media screen and (max-width: 500px) {
