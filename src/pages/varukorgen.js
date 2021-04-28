@@ -6,7 +6,6 @@ import { BiAlarm, BiTrash } from 'react-icons/bi'
 import { Button } from '../components/Button'
 import TransitionLink from "gatsby-plugin-transition-link"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-import { StateContext } from "../providers/StateProvider"
 
 const CartPage = () => {
     const [getCart, setGetCart] = useState([])
@@ -14,7 +13,6 @@ const CartPage = () => {
     const [cartCost, setCartCost] = useState(null)
     const [updateCart, setUpdateCart] = useState("Add")
     const [tax, setTax] = useState(0)
-    const { message, setMessage } = useContext(StateContext)
 
     const handleRemove = (id) => {
         setUpdateCart("Remove")
@@ -57,8 +55,6 @@ const CartPage = () => {
         a.push(order);
         localStorage.setItem("orderHistory", JSON.stringify(a))
         localStorage.removeItem("products")
-        let getStorage = JSON.parse(localStorage.getItem("orderHistory"))
-        setMessage(getStorage)
     }
 
     useEffect(() => {

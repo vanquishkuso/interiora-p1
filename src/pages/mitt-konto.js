@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import Layout from '../components/Layout'
 import styled from "styled-components"
 import Button from "../components/Button"
-import { StateContext } from '../providers/StateProvider'
 
 const AccountPage = () => {
 
@@ -14,7 +13,6 @@ const AccountPage = () => {
     const [activeColor, setActiveColor] = useState("#877D70")
     const [orderDate, setOrderDate] = useState()
     // let cart = JSON.parse(localStorage.getItem("order"))
-    const { message, setMessage } = useContext(StateContext)
     let cartHistory = []
 
     const data = [
@@ -32,7 +30,7 @@ const AccountPage = () => {
     useEffect(() => {
         setOrderData(JSON.parse(localStorage.getItem("orderHistory")))
         setGetCart(JSON.parse(localStorage.getItem("order")))
-    }, [message])
+    }, [])
 
 
     useEffect(() => {
