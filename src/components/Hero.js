@@ -15,10 +15,10 @@ import Dekoration from '../assets/images/Dekoration.jpg'
 
 const Hero = ({ title, paragraph }) => {
     const [pic, setPic] = useState()
-    const url = window.location.href
-    const checkUrl = url.split("/")[4]
 
     useEffect(() => {
+        const url = window.location.href
+        const checkUrl = url.split("/")[4]
         console.log(checkUrl)
         if (checkUrl === undefined) {
             setPic(<ImgBg src={Hero1} />)
@@ -55,7 +55,7 @@ const Hero = ({ title, paragraph }) => {
         if (checkUrl === "dekoration") {
             setPic(<ImgBg src={Dekoration} />)
         }
-    }, [checkUrl])
+    }, [title])
 
     return (
         <HeroContainer>
