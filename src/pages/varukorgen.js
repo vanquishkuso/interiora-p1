@@ -8,7 +8,7 @@ import TransitionLink from "gatsby-plugin-transition-link"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 const CartPage = () => {
-    const [getCart, setGetCart] = useState(JSON.parse(localStorage.getItem("products")))
+    const [getCart, setGetCart] = useState([])
     const [cart, setCart] = useState([])
     const [cartCost, setCartCost] = useState(null)
     const [updateCart, setUpdateCart] = useState("Add")
@@ -58,6 +58,8 @@ const CartPage = () => {
     }
 
     useEffect(() => {
+
+
         let fetchData
         if (getCart === null || getCart.length === 0) {
             fetchData = (
@@ -108,6 +110,11 @@ const CartPage = () => {
         setCart(fetchData)
 
     }, [getCart])
+
+    useEffect(() => {
+        setGetCart(JSON.parse(localStorage.getItem("products")))
+    }, [])
+
     return (
         <Layout>
             <SEO title="Varukorgen - Interiöra" />

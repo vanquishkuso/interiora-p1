@@ -5,8 +5,8 @@ import Button from "../components/Button"
 
 const AccountPage = () => {
 
-    const [getCart, setGetCart] = useState(JSON.parse(localStorage.getItem("order")))
-    const [getOrderData, setOrderData] = useState(JSON.parse(localStorage.getItem("orderHistory")))
+    const [getCart, setGetCart] = useState([])
+    const [getOrderData, setOrderData] = useState([])
     const [order, setOrder] = useState()
     const [activeText, setActiveText] = useState("")
     const [toggle, setToggle] = useState("orders")
@@ -27,7 +27,10 @@ const AccountPage = () => {
         setToggle(data)
     }
 
-
+    useEffect(() => {
+        setGetCart(JSON.parse(localStorage.getItem("order")))
+        setOrderData(JSON.parse(localStorage.getItem("orderHistory")))
+    }, [])
 
     useEffect(() => {
         const randomDate = (start, end) => {

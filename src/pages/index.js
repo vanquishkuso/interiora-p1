@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { graphql, useStaticQuery, Link } from 'gatsby'
 import Layout from "../components/Layout"
@@ -29,8 +29,9 @@ const pageQuery = graphql`
 const IndexPage = () => {
     const { gcms: { products } } = useStaticQuery(pageQuery)
 
-    localStorage.setItem("allProducts", JSON.stringify(products))
-
+    useEffect(() => {
+        localStorage.setItem("allProducts", JSON.stringify(products))
+    })
     return (
         <Layout>
             <SEO title="Interiöra" />
