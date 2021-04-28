@@ -28,6 +28,8 @@ const SearchInput = styled.input`
     font-weight: bold;
     font-size: 1.1em;
     letter-spacing: 0.03em;
+    z-index: 998;
+    text-indent: 25px;
 `
 
 

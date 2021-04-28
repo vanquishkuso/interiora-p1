@@ -54,7 +54,7 @@ const SearchPage = (props) => {
             <SearchBar
                 input={input}
                 onChange={updateInput}
-                styles={{ marginLeft: "5em" }}
+                styles={{ marginLeft: "5em", zIndex: "999" }}
             />
             <ProductList input={input} productList={productList} />
         </>

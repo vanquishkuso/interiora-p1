@@ -15,12 +15,20 @@ import { AiOutlineClose } from "react-icons/ai"
 const Header = () => {
 
   const [show, setShow] = useState(false)
+  const [showMobileMenu, setShowMobileMenu] = useState(false)
 
   const searchClick = () => {
     setShow(hide => !hide)
     localStorage.setItem("search", show)
     console.log("clicked")
     console.log(show)
+  }
+
+  const menuClick = () => {
+    localStorage.setItem("mobilemenustate", showMobileMenu)
+    setShowMobileMenu(hide => !hide)
+    console.log("clicked menu")
+    window.scrollTo(0, 0)
   }
 
   return (
@@ -31,12 +39,24 @@ const Header = () => {
 
 
 
-      <Bars />
+      <Bars onClick={menuClick} />
+
+      { showMobileMenu ? <MobileWrapper>
+        <MobileMenuCloseIcon onClick={menuClick} />
+        <MobileMenu>
+          {MenuData.map((item, index) => (
+            <MobileNavLink to={item.link} key={index}>{item.title}</MobileNavLink>
+          ))}
+        </MobileMenu>
+      </MobileWrapper>
+        : null
+      }
 
       <NavMenu>
         {MenuData.map((item, index) => (
           <NavLink to={item.link} key={index}>{item.title}</NavLink>
         ))}
+
       </NavMenu>
 
       <CartWrapper>
@@ -45,7 +65,7 @@ const Header = () => {
           <Search />
         </SearchClickable>
 
-        {show ? <div><SearchPage /><CloseIcon onClick={searchClick} /></div> : null}
+        {show ? <div><SearchPage /><CloseIcon onClick={searchClick} /><SearchWrapper onClick={searchClick} /></div> : null}
 
         <NavLink>
           <AniLink paintDrip to="/mitt-konto" duration={0.6} hex="#877D70"><Account /></AniLink>
@@ -92,8 +112,15 @@ const Logo = styled.div`
     transition: 0.3s ease;
   }
 
-  @media screen and (max-width: 1085px) {
+  @media screen and (max-width: 500px) {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-75%, 22%);
+    font-size: 1.8rem;
     margin: 0 auto;
+    z-index: 999;
   }
 `
 
@@ -219,26 +246,97 @@ const NavMenu = styled.div`
   }
 `
 
-const NavBtn = styled.div`
+const MobileWrapper = styled.div`
+  background-color: rgb(250,250,250,1);
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  text-align: center;
+  overflow: hidden;
+`
+
+const MobileMenu = styled.div`
+ // z-index: 60;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
   align-items: center;
-  margin-right: 24px;
+  align-content: center;
+  height: 100%;
+
+`
+
+const MobileNavLink = styled(Link)`
+ // position: relative;
+ // z-index: 999;
+  text-decoration: none;
+  padding: 0;
+  height: 7%;
+  cursor: pointer;
+  color: #877D70;
+  font-size: 1.5em;
 
   @media screen and (max-width: 1085px) {
-    display: none;
+    
+  }
+
+  &:hover {
+        color: #373737;
+        transition: 0.3s ease;
   }
 `
 
-const CloseIcon = styled(AiOutlineClose)`
+const MobileMenuCloseIcon = styled(AiOutlineClose)`
     position: absolute;
-    top: calc(100% + 28px);
+    top: 8%;
     right: 0;
     margin-right: 0.9em;
     color: #877D70;
     font-size: 1.8rem;
     cursor: pointer;
+    z-index: 100;
   &:hover {
       color: #373737;
       transition: 0.3s ease;
     }
+`
+
+const NavBtn = styled.div`
+display: flex;
+align-items: center;
+margin-right: 24px;
+
+@media screen and(max-width: 1085px) {
+  display: none;
+}
+`
+
+const CloseIcon = styled(AiOutlineClose)`
+position: absolute;
+top: calc(100% + 28px);
+right: 0;
+margin-right: 0.9em;
+color: #877D70;
+font-size: 1.8rem;
+cursor: pointer;
+z-index: 999;
+  &:hover {
+  color: #373737;
+  transition: 0.3s ease;
+}
+`
+
+const SearchWrapper = styled.div`
+background-color: rgb(50, 50, 50, 0.5);
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: 1;
 `

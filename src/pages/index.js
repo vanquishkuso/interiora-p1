@@ -33,7 +33,6 @@ const IndexPage = () => {
 
     return (
         <Layout>
-
             <SEO title="Interiöra" />
             <Hero title={"Interiöra"} paragraph={"Minimalism när den är som bäst"} />
             <ProductsWrapper id="product-section">

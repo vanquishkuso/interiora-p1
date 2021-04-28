@@ -43,6 +43,7 @@ const SearchWrapper = styled.div`
     left: 0;
     right: 0;
     border-radius: 5px;
+    z-index: 20;
 `
 
 const SearchList = styled(Link)`
