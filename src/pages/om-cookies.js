@@ -1,25 +1,21 @@
 import React from 'react'
 import Layout from '../components/Layout'
 import styled from "styled-components"
+import Picture from "../assets/images/om-cookies.jpg"
 
 
 const CookiePage = () => {
     return (
         <Layout>
 
-            <Title>Kontakta oss</Title>
+            <Title>Om cookies</Title>
             <Wrapper>
                 <LeftColumn>
-                    <p>Har du allmänna frågor eller funderingar kring vårt företag eller våra produkter? Har du ett önskemål om en produkt du vill att vi ska ta in i sortimentet? Skicka i så fall ett mejl till mejladressen nedan eller ring nedanstående telefonnummer:</p>
-                    <a href="mailto:hej@interiora.com">hej@interiora.com</a>
-                    <p> +46 70 111 11 11</p>
+                    <IMG src={Picture} alt="" />
                 </LeftColumn>
 
                 <RightColumn>
-                    <p>Har du synpunkter gällande en specifik produkt, beställning eller vill göra en reklamation? Kontakta oss i så fall genom att skicka ett mejl till mejladressen nedan eller ring nedanstående telefonnummer:</p>
-
-                    <a href="mailto:support@interiora.com">support@interiora.com</a>
-                    <p>+46 70 111 11 22</p>
+                    <p>På Interiöra använder vi oss av cookies för att förbättra din upplevelse. Vi värnar om din integritet och hanterar dina personliga uppgifter med största möjliga försiktighet.</p>
                 </RightColumn>
             </Wrapper>
         </Layout>
@@ -27,12 +23,13 @@ const CookiePage = () => {
 }
 
 const Wrapper = styled.div`
-    height: 70vh;
+    height: 100%;
     display: flex;
     flex-direction: row;
-    margin-top: 10vh;
-    justify-content: space-evenly;
-
+    margin-top: 3em;
+    justify-content: center;
+    justify-items: center;
+    margin-bottom: 5em;
 
     @media screen and (max-width: 500px) {
         flex-direction: column;
@@ -46,14 +43,17 @@ const Wrapper = styled.div`
 const Title = styled.h1`
     margin-top: 0.7em;
     text-align: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     letter-spacing: 3px;
     font-weight: bold;
     padding: 0 1rem;
 `
 
 const LeftColumn = styled.div`
-    width: 30%;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
        p {
             text-align: left;
             margin-bottom: 2rem;
@@ -71,14 +71,21 @@ const LeftColumn = styled.div`
         }
        }
        @media screen and (max-width: 500px) {
-           width: 80%;
+        width: 100%;
            margin: 0 auto;
+           margin-bottom: 0em;
+           justify-content: center;
        }
 `
 
 const RightColumn = styled.div`
-    width: 30%;
+    width: 50%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
        p {
+        width: 80%;
         text-align: left;
         margin-bottom: 2rem;
         font-weight: 400;
@@ -95,11 +102,16 @@ const RightColumn = styled.div`
         }
        }
        @media screen and (max-width: 500px) {
-           width: 80%;
+           width: 100%;
            margin: 0 auto;
            margin-bottom: 3em;
        }
 `
 
+const IMG = styled.img`
+    width: 80%;
+    border-radius: 5px;
+    margin-bottom: 1em;
+`
 
 export default CookiePage;

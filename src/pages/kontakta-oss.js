@@ -63,11 +63,10 @@ const Title = styled.h1`
 `
 
 const LeftColumn = styled.div`
-    width: 80%;
+    width: 50%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    margin-left: 5em;
        p {
             text-align: left;
             margin-bottom: 2rem;
@@ -94,13 +93,13 @@ const LeftColumn = styled.div`
 `
 
 const RightColumn = styled.div`
-    width: 80%;
+    width: 50%;
     text-align: center;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin-left: 5em;
+
        p {
         width: 80%;
         text-align: left;
@@ -127,12 +126,10 @@ const RightColumn = styled.div`
 `
 
 const IMG = styled.img`
-    width: 70%;
+    width: 80%;
     border-radius: 5px;
     margin-bottom: 1em;
-    @media screen and (max-width: 500px) {
-        width: 80%;
-       }
+
 `
 
 const ContactWrapper = styled.div`
