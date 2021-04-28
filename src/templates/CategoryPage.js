@@ -45,7 +45,7 @@ const CategoryPage = ({
                                 </LinkItem>
                                 <Category>{products.categories[0].name}</Category>
                             </TextWrapper>
-                            <Price>{products.price} kr</Price>
+                            <Price>{products.price}&nbsp;kr</Price>
                         </LinkWrapper>
                         <ButtonWrapper>
                             <AddToCartButton product={products} />
@@ -121,18 +121,15 @@ query CategoryPageQuery($id: ID!) {
 export default CategoryPage
 
 const ProductsWrapper = styled.div`
-    
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     padding: 1em;
-
     margin-top: 1em;
-
     transition: 0.3s ease;
 
     @media screen and (max-width: 500px) {
-    grid-template-columns: 1fr 1fr;
-    padding: 1rem;
+        grid-template-columns: 1fr 1fr;
+        padding: 0;
 }
 `
 
@@ -145,19 +142,25 @@ const Product = styled.div`
     transition: 0.3s ease;
 
     @media screen and (max-width: 500px) {
+        padding: 0;
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
         margin-bottom: 2em;
 }
 `
 
 const Price = styled.p`
-    font-size: 1.2em;
+    font-size: 1em;
 `
 
 const LinkWrapper = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: flex-start;
     margin-top: 0.2em;
+
+
 `
 
 const LinkItem = styled(Link)`
@@ -178,10 +181,9 @@ const ButtonWrapper = styled.div`
 `
 
 const ImageWrapper = styled.div`
-transition: 0.3s ease;
+    transition: 0.3s ease;
     filter: brightness(80%);
  
-
     &:hover {
         filter: brightness(100%);
     }
@@ -193,4 +195,5 @@ const Category = styled.div`
 
 const TextWrapper = styled.div`
     line-height: 1.5;
+    text-align: left;
 `

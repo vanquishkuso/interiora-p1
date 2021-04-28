@@ -60,7 +60,7 @@ const IndexPage = () => {
                                 </LinkItem>
                                 <Category>{products.categories[0].name}</Category>
                             </TextWrapper>
-                            <Price>{products.price} kr</Price>
+                            <Price>{products.price}&nbsp;kr</Price>
                         </LinkWrapper>
                         <ButtonWrapper>
                             <AddToCartButton product={products} />
@@ -100,7 +100,7 @@ const Product = styled.div`
 
     @media screen and (max-width: 500px) {
         padding: 0;
-        width: 85%;
+        max-width: 90%;
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 2em;
@@ -151,4 +151,5 @@ const Category = styled.div`
 
 const TextWrapper = styled.div`
     line-height: 1.5;
+    text-align: left;
 `
