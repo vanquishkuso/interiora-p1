@@ -100,7 +100,7 @@ const Product = styled.div`
 
     @media screen and (max-width: 500px) {
         padding: 0;
-        max-width: 90%;
+        width: 90%;
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 2em;
@@ -108,7 +108,7 @@ const Product = styled.div`
 `
 
 const Price = styled.p`
-    font-size: 1.2em;
+    font-size: 1em;
 `
 
 const LinkWrapper = styled.div`

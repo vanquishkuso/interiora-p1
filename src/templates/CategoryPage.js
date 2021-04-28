@@ -31,7 +31,7 @@ const CategoryPage = ({
                                 <img
                                     src={products.images[0].url}
                                     style={{
-                                        maxWidth: '100%',
+                                        width: '100%',
                                         borderRadius: '5px',
 
                                     }}
@@ -130,6 +130,7 @@ const ProductsWrapper = styled.div`
     @media screen and (max-width: 500px) {
         grid-template-columns: 1fr 1fr;
         padding: 0;
+        text-align: center;
 }
 `
 
@@ -152,15 +153,14 @@ const Product = styled.div`
 
 const Price = styled.p`
     font-size: 1em;
+    margin-right: 1em;
 `
 
 const LinkWrapper = styled.div`
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: flex-start;
     margin-top: 0.2em;
-
-
 `
 
 const LinkItem = styled(Link)`
@@ -172,7 +172,7 @@ const LinkItem = styled(Link)`
 `
 
 const ImageLink = styled(Link)`
-    
+
 `
 
 const ButtonWrapper = styled.div`
