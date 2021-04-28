@@ -13,11 +13,8 @@ import Fåtöljer from '../assets/images/Fåtöljer.jpg'
 import Dekoration from '../assets/images/Dekoration.jpg'
 
 
-const Hero = ({ title, paragraph, picture }) => {
-
+const Hero = ({ title, paragraph }) => {
     const [pic, setPic] = useState()
-    const getSiteTitle = document.title
-    const categoryTitle = getSiteTitle.substr(0, getSiteTitle.indexOf(" "))
     const url = window.location.href
     const checkUrl = url.split("/")[4]
 
