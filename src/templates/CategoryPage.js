@@ -67,11 +67,6 @@ const CategoryPage = ({
             {
                 products.slice(3, 6).map(({ slug, ...products }) => (
                     <Product>
-                        {localStorage.setItem("bannerproduct", products.name)}
-                        {localStorage.setItem("bannerproductdescription", products.description)}
-                        {localStorage.setItem("bannerslug", slug)}
-                        {console.log(localStorage.getItem("bannerslug"))}
-
                         <ImageWrapper>
                             <ImageLink to={`/produkt/${slug}`}>
                                 <img
