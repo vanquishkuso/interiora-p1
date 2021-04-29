@@ -4,7 +4,7 @@ import { AiOutlineClose } from "react-icons/ai"
 
 const SearchBar = ({ input: keyword, onChange: setKeyword }) => {
 
-    const BarStyling = { width: "100%", height: "5em", background: "#F2F1F9", border: "none", padding: "0.5rem" };
+    const BarStyling = { width: "100%", height: "43px", background: "#F2F1F9", border: "none", padding: "0.5rem" };
     return (
 
         <div><SearchInput

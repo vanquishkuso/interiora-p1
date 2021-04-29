@@ -171,12 +171,17 @@ const RightColumn = styled.div`
 
 const MenuItem = styled.a`
     background-color: #877D70;
-    padding: 1em;
-    margin-bottom: 1em;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
     color: #fff;
+    width: 131px;
+    height: 50px;
     cursor: pointer;
     font-weight: bold;
     transition: 0.3s ease;
+    margin-bottom: 1em;
     &:hover {
         background-color: #555555;
     }

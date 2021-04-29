@@ -101,7 +101,7 @@ const ProductDescription = styled.p`
 `
 
 const ProductPrice = styled.p`
-    margin-top: 1em;
+    margin-top: 18px;
     font-size: 1.28em;
 `
 

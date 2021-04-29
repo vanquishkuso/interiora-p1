@@ -45,11 +45,12 @@ const Footer = () => {
 export default Footer
 
 const FooterContainer = styled.div`
-    padding: 5rem calc((100vw - 1100px) /2);
+   // padding: 5rem calc((100vw - 1100px) /2);
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1fr);
     color: #fff;
     background: #877D70;
+    height: 1234px;
 `
 const FooterDesc = styled.div`
     padding: 0 2rem;
@@ -84,13 +85,13 @@ const FooterLinkItems = styled.div`
     }
 `
 const FooterLinkTitle = styled.h2`
-    font-size: 14px;
+    font-size: 18px;
     margin-bottom: 16px;
 `
 const FooterLink = styled(Link)`
     text-decoration: none;
     margin-bottom: 0.5rem;
-    font-size: 14px;
+    font-size: 16px;
     color: #fff;
 
     &:hover {

@@ -56,14 +56,16 @@ const IndexPage = () => {
                                 />
                             </ImageLink>
                         </ImageWrapper>
+                        <Price>{products.price}&nbsp;kr</Price>
                         <LinkWrapper>
+
                             <TextWrapper>
                                 <LinkItem key={slug} to={`/produkt/${slug}`}>
                                     {products.name}
                                 </LinkItem>
                                 <Category>{products.categories[0].name}</Category>
                             </TextWrapper>
-                            <Price>{products.price}&nbsp;kr</Price>
+
                         </LinkWrapper>
                         <ButtonWrapper>
                             <AddToCartButton product={products} />
@@ -93,6 +95,7 @@ const IndexPage = () => {
                                 />
                             </ImageLink>
                         </ImageWrapper>
+                        <Price>{products.price}&nbsp;kr</Price>
                         <LinkWrapper>
                             <TextWrapper>
                                 <LinkItem key={slug} to={`/produkt/${slug}`}>
@@ -100,7 +103,7 @@ const IndexPage = () => {
                                 </LinkItem>
                                 <Category>{products.categories[0].name}</Category>
                             </TextWrapper>
-                            <Price>{products.price}&nbsp;kr</Price>
+
                         </LinkWrapper>
                         <ButtonWrapper>
                             <AddToCartButton product={products} />
@@ -153,7 +156,7 @@ const Product = styled.div`
 `
 
 const Price = styled.p`
-    font-size: 1em;
+    font-size: 18px;
 `
 
 const MiniBannerWrapper = styled.div`
@@ -166,7 +169,7 @@ const MiniBannerWrapper = styled.div`
 
 const LinkWrapper = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: flex-start;
     margin-top: 0.2em;
 `
@@ -204,5 +207,5 @@ const Category = styled.div`
 
 const TextWrapper = styled.div`
     line-height: 1.5;
-    text-align: left;
+    text-align: center;
 `

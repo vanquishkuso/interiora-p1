@@ -44,6 +44,7 @@
         "moment": "^2.29.1",
         "react": "^17.0.1",
         "react-anchor-link-smooth-scroll": "^1.0.12",
+        "react-cookie-consent": "^6.2.3",
         "react-dom": "^17.0.1",
         "react-helmet": "^6.1.0",
         "react-icons": "^4.2.0",

@@ -34,7 +34,7 @@ const AddToCartButton = ({ product }) => {
 
     return (
         <div>
-            <Button primary={true} round={false} onClick={(e, i) => {
+            <Button style={{ width: "131px", height: "36px", margin: "0auto" }} primary={true} round={false} onClick={(e, i) => {
                 handleAddToCart(e)
                 addToCart(
                     {
@@ -48,7 +48,7 @@ const AddToCartButton = ({ product }) => {
                 )
 
             }}>{clickedItem == product.id && isClicked ?
-                <div><Loader type="Oval" color="#cccccc" height={30} width={30} /></div> : <p style={{ marginBottom: "5px", marginTop: "5px" }}>KÖP</p>}</Button>
+                <div><Loader type="Oval" color="#cccccc" height={19} width={19} /></div> : <p style={{ marginBottom: "0", marginTop: "-3px" }}>KÖP</p>}</Button>
 
         </div>
     )
