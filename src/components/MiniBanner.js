@@ -1,59 +1,30 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { Button } from './Button'
-import AnchorLink from 'react-anchor-link-smooth-scroll'
+import { LinkButton } from './LinkButton'
 import Hero1 from '../assets/images/hero1.jpg'
 import Lampor from '../assets/images/Lampor.jpg'
 import Stolar from '../assets/images/Stolar.jpg'
 import Bord from '../assets/images/Bord.jpg'
-import Matsalsgrupper from '../assets/images/Matsalsgrupper.jpg'
+import Matsalsgrupper from '../assets/images/banner/sale-matsalsgrupper.jpg'
 import Sängar from '../assets/images/Sängar.jpg'
-import Soffor from '../assets/images/Soffor.jpg'
+import Soffor from '../assets/images/banner/sale-soffor.jpg'
 import Fåtöljer from '../assets/images/Fåtöljer.jpg'
 import Dekoration from '../assets/images/Dekoration.jpg'
+import { BannerData } from "../data/BannerData"
 
-
-const Hero = ({ title, paragraph }) => {
+const MiniBanner = ({ title, paragraph, picturesrc, buttonBannerText, linkTextTarget }) => {
     const [pic, setPic] = useState()
+    const [textTitle, setTextTitle] = useState()
+    const [para, setPara] = useState()
 
     useEffect(() => {
         const url = window.location.href
         const checkUrl = url.split("/")[4]
         console.log(checkUrl)
         if (checkUrl === undefined) {
-            setPic(<ImgBg src={Hero1} />)
-        }
-
-        if (checkUrl === "lampor") {
-            setPic(<ImgBg src={Lampor} />)
-        }
-
-        if (checkUrl === "stolar") {
-            setPic(<ImgBg src={Stolar} />)
-        }
-
-        if (checkUrl === "bord") {
-            setPic(<ImgBg src={Bord} />)
-        }
-
-        if (checkUrl === "matsalsgrupper") {
-            setPic(<ImgBg src={Matsalsgrupper} />)
-        }
-
-        if (checkUrl === "sangar") {
-            setPic(<ImgBg src={Sängar} />)
-        }
-
-        if (checkUrl === "soffor") {
             setPic(<ImgBg src={Soffor} />)
-        }
-
-        if (checkUrl === "fatoljer") {
-            setPic(<ImgBg src={Fåtöljer} />)
-        }
-
-        if (checkUrl === "dekoration") {
-            setPic(<ImgBg src={Dekoration} />)
+        } else {
+            setPic(<ImgBg src={picturesrc} />)
         }
     }, [title])
 
@@ -69,14 +40,15 @@ const Hero = ({ title, paragraph }) => {
                     <HeroH1>{title}</HeroH1>
                     <HeroP>{paragraph}</HeroP>
 
-                    { /*   <AnchorLink href="#product-section"><Button primary="true" big="true" round="true">Till produkterna</Button></AnchorLink> */}
+                    <LinkButton to={linkTextTarget} primary="true" big="true" round="true">{buttonBannerText}</LinkButton>
+
                 </HeroItems>
             </HeroContent>
         </HeroContainer >
     )
 }
 
-export default Hero
+export default MiniBanner
 
 const HeroContainer = styled.div`
     background: #0c0c0c;
@@ -139,7 +111,7 @@ const HeroItems = styled.div`
     text-align: center;
     height: 100vh;
     max-height: 100%;
-    margin-top: 2.5em;
+    margin-top: -1em;
     padding: 0;
     color: #fff;
     line-height: 1.1;

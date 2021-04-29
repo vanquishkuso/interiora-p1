@@ -7,6 +7,7 @@ import Hero from '../components/Hero'
 import { Button } from '../components/Button'
 import AddToCartButton from '../components/AddToCartButton'
 import Lampor from '../assets/images/Lampor.jpg'
+import MiniBanner from '../components/MiniBanner'
 
 const pageQuery = graphql`
 {
@@ -29,7 +30,11 @@ const pageQuery = graphql`
 const IndexPage = () => {
     const { gcms: { products } } = useStaticQuery(pageQuery)
 
+    let first_content = 6
+    let second_content = 12
+
     useEffect(() => {
+        console.log(localStorage.getItem("bannerproduct") + localStorage.getItem("bannerproductdescription"))
         localStorage.setItem("allProducts", JSON.stringify(products))
     })
     return (
@@ -37,8 +42,44 @@ const IndexPage = () => {
             <SEO title="Interiöra" />
             <Hero title={"Interiöra"} paragraph={"Minimalism när den är som bäst"} />
             <ProductsWrapper id="product-section">
-                {products.map(({ slug, ...products }, i) => (
+                {products.slice(0, 6).map(({ slug, ...products }, i) => (
+                    <Product>
 
+                        <ImageWrapper>
+                            <ImageLink to={`/produkt/${slug}`}>
+                                <img
+                                    src={products.images[0].url}
+                                    style={{
+                                        maxWidth: '100%',
+                                        borderRadius: '5px',
+
+                                    }}
+                                />
+                            </ImageLink>
+                        </ImageWrapper>
+                        <LinkWrapper>
+                            <TextWrapper>
+                                <LinkItem key={slug} to={`/produkt/${slug}`}>
+                                    {products.name}
+                                </LinkItem>
+                                <Category>{products.categories[0].name}</Category>
+                            </TextWrapper>
+                            <Price>{products.price}&nbsp;kr</Price>
+                        </LinkWrapper>
+                        <ButtonWrapper>
+                            <AddToCartButton product={products} />
+                        </ButtonWrapper>
+                    </Product>
+                ))}
+            </ProductsWrapper>
+
+            <MiniBannerWrapper>
+                <MiniBanner title={"Fynda på fina soffor"} linkTextTarget={`/kategori/soffor`} buttonBannerText={"Till sofforna"} />
+            </MiniBannerWrapper>
+
+            <ProductsWrapper>
+
+                {products.slice(6, 12).map(({ slug, ...products }, i) => (
                     <Product>
 
                         <ImageWrapper>
@@ -69,7 +110,7 @@ const IndexPage = () => {
 
                 ))}
             </ProductsWrapper>
-        </Layout>
+        </Layout >
     )
 }
 
@@ -109,6 +150,14 @@ const Product = styled.div`
 
 const Price = styled.p`
     font-size: 1em;
+`
+
+const MiniBannerWrapper = styled.div`
+    margin-top: 2em;
+
+    @media screen and (max-width: 500px) {
+        margin-top: 3em;
+    }
 `
 
 const LinkWrapper = styled.div`

@@ -6,7 +6,7 @@ import Layout from '../components/Layout'
 import SEO from '../components/Seo'
 import Hero from '../components/Hero'
 import AddToCartButton from '../components/AddToCartButton'
-
+import MiniBanner from "../components/MiniBanner"
 
 const CategoryPage = ({
 
@@ -24,7 +24,7 @@ const CategoryPage = ({
         <ProductsWrapper id="product-section">
             {
 
-                products.map(({ slug, ...products }) => (
+                products.slice(0, 3).map(({ slug, ...products }) => (
                     <Product>
                         <ImageWrapper>
                             <ImageLink to={`/produkt/${slug}`}>
@@ -52,12 +52,54 @@ const CategoryPage = ({
                         </ButtonWrapper>
                     </Product>
                 ))}
-
-
-
-
-
         </ProductsWrapper>
+
+        {
+            products.slice(0, 1).map(({ slug, ...products }) => (
+                <MiniBannerWrapper>
+                    {console.log("slug här " + slug)}
+                    <MiniBanner title={products.name} paragraph={products.description} picturesrc={products.images[0].url} buttonBannerText={`Till produkten`} linkTextTarget={`/produkt/${slug}`} />
+                </MiniBannerWrapper>
+            ))
+        }
+
+        <ProductsWrapper>
+            {
+                products.slice(3, 6).map(({ slug, ...products }) => (
+                    <Product>
+                        {localStorage.setItem("bannerproduct", products.name)}
+                        {localStorage.setItem("bannerproductdescription", products.description)}
+                        {localStorage.setItem("bannerslug", slug)}
+                        {console.log(localStorage.getItem("bannerslug"))}
+
+                        <ImageWrapper>
+                            <ImageLink to={`/produkt/${slug}`}>
+                                <img
+                                    src={products.images[0].url}
+                                    style={{
+                                        width: '100%',
+                                        borderRadius: '5px',
+
+                                    }}
+                                />
+                            </ImageLink>
+                        </ImageWrapper>
+                        <LinkWrapper>
+                            <TextWrapper>
+                                <LinkItem key={slug} to={`/produkt/${slug}`}>
+                                    {products.name}
+                                </LinkItem>
+                                <Category>{products.categories[0].name}</Category>
+                            </TextWrapper>
+                            <Price>{products.price}&nbsp;kr</Price>
+                        </LinkWrapper>
+                        <ButtonWrapper>
+                            <AddToCartButton product={products} />
+                        </ButtonWrapper>
+                    </Product>
+                ))}
+        </ProductsWrapper>
+
     </Layout>
 )
 // filter(data => data.categories[0].name.includes(document.title.substr(0, document.title.indexOf(" ")))
@@ -75,6 +117,7 @@ query CategoryPageQuery($id: ID!) {
           name
           slug
           price
+          description
           categories {
               name
               description
@@ -196,4 +239,12 @@ const Category = styled.div`
 const TextWrapper = styled.div`
     line-height: 1.5;
     text-align: left;
+`
+
+const MiniBannerWrapper = styled.div`
+    margin-top: 2em;
+
+    @media screen and (max-width: 500px) {
+        margin-top: 3em;
+    }
 `
