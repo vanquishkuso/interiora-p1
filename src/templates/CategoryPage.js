@@ -59,7 +59,9 @@ const CategoryPage = ({
                 <MiniBannerWrapper>
                     {console.log("slug här " + slug)}
                     <MiniBanner title={products.name} paragraph={products.description} picturesrc={products.images[0].url} buttonBannerText={`Till produkten`} linkTextTarget={`/produkt/${slug}`} />
+                    {console.log(products.images[0].url)}
                 </MiniBannerWrapper>
+
             ))
         }
 

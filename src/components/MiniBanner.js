@@ -8,6 +8,7 @@ import Bord from '../assets/images/Bord.jpg'
 import Matsalsgrupper from '../assets/images/banner/sale-matsalsgrupper.jpg'
 import Sängar from '../assets/images/Sängar.jpg'
 import Soffor from '../assets/images/banner/sale-soffor.jpg'
+import BannerDekoration from "../assets/images/banner/banner-dekoration.jpg"
 import Fåtöljer from '../assets/images/Fåtöljer.jpg'
 import Dekoration from '../assets/images/Dekoration.jpg'
 import { BannerData } from "../data/BannerData"
@@ -21,11 +22,9 @@ const MiniBanner = ({ title, paragraph, picturesrc, buttonBannerText, linkTextTa
         const url = window.location.href
         const checkUrl = url.split("/")[4]
         console.log(checkUrl)
-        if (checkUrl === undefined) {
-            setPic(<ImgBg src={Soffor} />)
-        } else {
-            setPic(<ImgBg src={picturesrc} />)
-        }
+
+        setPic(<ImgBg src={picturesrc} />)
+
     }, [title])
 
     return (

@@ -74,7 +74,7 @@ const IndexPage = () => {
             </ProductsWrapper>
 
             <MiniBannerWrapper>
-                <MiniBanner title={"Fynda på fina soffor"} linkTextTarget={`/kategori/soffor`} buttonBannerText={"Till sofforna"} />
+                <MiniBanner title={"Fynda på fina soffor"} linkTextTarget={`/kategori/soffor`} buttonBannerText={"Till sofforna"} picturesrc={"https://media.graphcms.com/YkJlZKMHQij8e4lXwX6b"} />
             </MiniBannerWrapper>
 
             <ProductsWrapper>
@@ -110,6 +110,11 @@ const IndexPage = () => {
 
                 ))}
             </ProductsWrapper>
+
+            <MiniBannerWrapper>
+                <MiniBanner title={"Kolla in våra nya dekorationer"} linkTextTarget={`/kategori/dekoration`} buttonBannerText={"Till dekorationerna"} picturesrc={"https://media.graphcms.com/6XpZNGu5S1Kef4aG6O8G"} />
+            </MiniBannerWrapper>
+
         </Layout >
     )
 }
