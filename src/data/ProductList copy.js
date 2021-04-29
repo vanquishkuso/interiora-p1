@@ -3,7 +3,6 @@ import styled from "styled-components"
 import { Link } from "gatsby"
 
 const ProductList = ({ input, productList = [] }) => {
-    console.log(productList)
     let search;
     if (input.length > 0) {
         search = productList.map((data, index) => {

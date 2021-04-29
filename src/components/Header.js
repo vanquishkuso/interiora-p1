@@ -7,7 +7,6 @@ import { FiShoppingCart, FiSearch } from 'react-icons/fi'
 import { BsFillPersonFill } from "react-icons/bs"
 import TransitionLink from "gatsby-plugin-transition-link"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
-import SearchContainer from "./SearchContainer"
 import ProductData from "../data/ProductList"
 import SearchPage from "./SearchPage"
 import { AiOutlineClose } from "react-icons/ai"
@@ -20,14 +19,11 @@ const Header = () => {
   const searchClick = () => {
     setShow(hide => !hide)
     localStorage.setItem("search", show)
-    console.log("clicked")
-    console.log(show)
   }
 
   const menuClick = () => {
     localStorage.setItem("mobilemenustate", showMobileMenu)
     setShowMobileMenu(hide => !hide)
-    console.log("clicked menu")
     window.scrollTo(0, 0)
   }
 

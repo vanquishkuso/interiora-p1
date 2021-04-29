@@ -18,7 +18,6 @@ const CategoryPage = ({
 }) => (
 
     <Layout>
-        {console.log(products)}
         <Hero title={products[0].categories[0].name} paragraph={products[0].categories[0].description} />
         <SEO title={products[0].categories[0].name + " - Interiöra"} />
         <ProductsWrapper id="product-section">
@@ -57,9 +56,7 @@ const CategoryPage = ({
         {
             products.slice(0, 1).map(({ slug, ...products }) => (
                 <MiniBannerWrapper>
-                    {console.log("slug här " + slug)}
                     <MiniBanner title={products.name} paragraph={products.description} picturesrc={products.images[0].url} buttonBannerText={`Till produkten`} linkTextTarget={`/produkt/${slug}`} />
-                    {console.log(products.images[0].url)}
                 </MiniBannerWrapper>
 
             ))

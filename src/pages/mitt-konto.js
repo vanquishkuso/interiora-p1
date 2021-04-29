@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Layout from '../components/Layout'
 import styled from "styled-components"
-import Button from "../components/Button"
+import { Button } from '../components/Button'
 
 const AccountPage = () => {
 
@@ -47,7 +47,6 @@ const AccountPage = () => {
         if (toggle === "orders" && orderData !== null) {
             fetchOrderData = (
                 orderData.map((data, i) => {
-                    { console.log(data) }
                     return (
                         <OrderWrapper>
                             <OrderItemWrapper>
@@ -104,7 +103,7 @@ const AccountPage = () => {
                     <MenuItem onClick={(data) => handleClick("payment")} style={{ backgroundColor: toggle === "payment" ? "#373737" : null }}>Betalning</MenuItem>
                     <MenuItem onClick={(data) => handleClick("orders")} style={{ backgroundColor: toggle === "orders" ? "#373737" : null, }}>Mina beställningar</MenuItem>
                     <MenuItem onClick={(data) => handleClick("settings")} style={{ backgroundColor: toggle === "settings" ? "#373737" : null }}>Inställningar</MenuItem>
-                    <button onClick={() => localStorage.clear()}>Töm orderhistorik</button>
+                    <Button onClick={() => localStorage.clear()} primary={true} style={{ fontWeight: "bold" }}>Töm orderhistorik</Button>
 
                 </LeftColumn>
                 <RightColumn>
@@ -174,7 +173,6 @@ const MenuItem = styled.a`
     background-color: #877D70;
     padding: 1em;
     margin-bottom: 1em;
-    border-radius: 5px;
     color: #fff;
     cursor: pointer;
     font-weight: bold;

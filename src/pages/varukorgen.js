@@ -19,7 +19,7 @@ const CartPage = () => {
         const filtered = getCart.filter(item => item.id !== id)
         localStorage.setItem("products", JSON.stringify(filtered))
         setGetCart(filtered)
-        console.log(filtered)
+
         var sum = 0;
         for (var i = 0; i < filtered.length; i++) {
             sum += parseInt(filtered[i].price)
@@ -31,11 +31,6 @@ const CartPage = () => {
         setCartCost(prevCartCost => prevCartCost + price)
         setTax(prevTax => prevTax + cartCost * 0.2)
         //  getCart.forEach(data => setCartCost(prev => prev + data.price))
-    }
-
-    const handleCalc = (e) => {
-        console.log(cartCost * 0.2)
-        console.log(tax)
     }
 
     const randomDate = (start, end) => {
@@ -157,7 +152,7 @@ const CartPage = () => {
 
                 <ButtonWrapper>
                     <AniLink onClick={() => sendOrder()} paintDrip to="/bekraftelse" duration={0.6} hex="#877D70" style={{ textDecoration: "none", margin: "0 auto" }}>
-                        <Button big="false" round="true" > Beställ</Button>
+                        <Button>Beställ</Button>
                     </AniLink>
                 </ButtonWrapper>
             </FormWrapper> : null}

@@ -34,7 +34,6 @@ const IndexPage = () => {
     let second_content = 12
 
     useEffect(() => {
-        console.log(localStorage.getItem("bannerproduct") + localStorage.getItem("bannerproductdescription"))
         localStorage.setItem("allProducts", JSON.stringify(products))
     })
     return (

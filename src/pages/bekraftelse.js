@@ -3,13 +3,6 @@ import Layout from '../components/Layout'
 import styled from "styled-components"
 
 const ConfirmPage = () => {
-    const [order, setOrder] = useState()
-
-    const getOrder = (e) => {
-        let cart = JSON.parse(localStorage.getItem("orderHistory"))
-        setOrder("f")
-        console.log(cart)
-    }
 
     return (
         <Layout>
@@ -17,7 +10,6 @@ const ConfirmPage = () => {
                 <h1>Tack för din beställning!</h1>
                 <p>Du har fått ett bekräftelsemejl skickad till din mejladress</p>
                 <p>Välkommen åter!</p>
-                <button onClick={(e) => getOrder(e)}>Testa order</button>
             </Wrapper>
 
         </Layout>

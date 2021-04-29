@@ -19,7 +19,7 @@ const Hero = ({ title, paragraph }) => {
     useEffect(() => {
         const url = window.location.href
         const checkUrl = url.split("/")[4]
-        console.log(checkUrl)
+
         if (checkUrl === undefined) {
             setPic(<ImgBg src={Hero1} />)
         }

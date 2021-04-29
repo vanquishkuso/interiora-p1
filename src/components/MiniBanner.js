@@ -21,7 +21,6 @@ const MiniBanner = ({ title, paragraph, picturesrc, buttonBannerText, linkTextTa
     useEffect(() => {
         const url = window.location.href
         const checkUrl = url.split("/")[4]
-        console.log(checkUrl)
 
         setPic(<ImgBg src={picturesrc} />)
 
