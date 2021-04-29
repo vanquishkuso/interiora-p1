@@ -40,7 +40,9 @@ const MiniBanner = ({ title, paragraph, picturesrc, buttonBannerText, linkTextTa
                     <HeroH1>{title}</HeroH1>
                     <HeroP>{paragraph}</HeroP>
 
-                    <LinkButton to={linkTextTarget} primary="true" big="true" round="true">{buttonBannerText}</LinkButton>
+                    <ButtonWrapper>
+                        <LinkButton to={linkTextTarget} primary="true" big="true" round="true">{buttonBannerText}</LinkButton>
+                    </ButtonWrapper>
 
                 </HeroItems>
             </HeroContent>
@@ -55,7 +57,7 @@ const HeroContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40vh;
+    height: 35vh;
     padding: 0 1rem; 
     position: relative;
     margin-top: -80px;
@@ -120,7 +122,7 @@ const HeroItems = styled.div`
 
 const HeroH1 = styled.h1`
     font-size: clamp(2.5rem, 6vw, 3.8rem);
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.7rem;
     letter-spacing: 3px;
     font-weight: bold;
     padding: 0 1rem;
@@ -128,9 +130,14 @@ const HeroH1 = styled.h1`
 
 const HeroP = styled.p`
     font-size: clamp(1.5rem, 3vw, 2rem);
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     font-weight: 400;
 `
 
+const ButtonWrapper = styled.div`
+    @media screen and (max-width: 500px) {
+        margin-top: -1em;
+    }
+`
 
 
