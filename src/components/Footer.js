@@ -91,7 +91,7 @@ const FooterLinkTitle = styled.h2`
 const FooterLink = styled(Link)`
     text-decoration: none;
     margin-bottom: 0.5rem;
-    font-size: 16px;
+    font-size: 14px;
     color: #fff;
 
     &:hover {

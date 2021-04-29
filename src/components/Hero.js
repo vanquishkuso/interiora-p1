@@ -147,7 +147,7 @@ const HeroItems = styled.div`
 `
 
 const HeroH1 = styled.h1`
-    font-size: clamp(2.5rem, 6vw, 3.8rem);
+    font-size: clamp(1.8rem, 6vw, 3.8rem);
     margin-bottom: 1.5rem;
     letter-spacing: 3px;
     font-weight: bold;
@@ -155,7 +155,7 @@ const HeroH1 = styled.h1`
 `
 
 const HeroP = styled.p`
-    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-size: clamp(1.2rem, 3vw, 2rem);
     margin-bottom: 2rem;
     font-weight: 400;
 `

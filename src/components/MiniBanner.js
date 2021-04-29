@@ -39,7 +39,7 @@ const MiniBanner = ({ title, paragraph, picturesrc, buttonBannerText, linkTextTa
                     <HeroP>{paragraph}</HeroP>
 
                     <ButtonWrapper>
-                        <LinkButton to={linkTextTarget} primary="true" big="true" round="true">{buttonBannerText}</LinkButton>
+                        <LinkButton to={linkTextTarget} primary="true">{buttonBannerText}</LinkButton>
                     </ButtonWrapper>
 
                 </HeroItems>
@@ -72,7 +72,7 @@ const HeroContainer = styled.div`
         background: linear-gradient(
             180deg,
             rgba(0, 0, 0, 0) 0%, 
-            rgba(0, 0, 0, 0.3) 100%
+            rgba(0, 0, 0, 0.6) 100%
             ),
         linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, transparent 100%)
     }
@@ -119,7 +119,7 @@ const HeroItems = styled.div`
 `
 
 const HeroH1 = styled.h1`
-    font-size: clamp(2.5rem, 6vw, 3.8rem);
+    font-size: clamp(1.5rem, 6vw, 3.8rem);
     margin-bottom: 0.7rem;
     letter-spacing: 3px;
     font-weight: bold;
@@ -127,7 +127,7 @@ const HeroH1 = styled.h1`
 `
 
 const HeroP = styled.p`
-    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-size: clamp(1rem, 3vw, 2rem);
     margin-bottom: 3rem;
     font-weight: 400;
 `
