@@ -187,7 +187,7 @@ export default CartPage
 
 const ConfirmButton = styled(Button)`
     &:disabled {
-        opacity: 0.5;
+        opacity: 0.3;
         transform: translateY(0px);
     }
     &:disabled:hover {
