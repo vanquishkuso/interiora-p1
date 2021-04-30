@@ -45,12 +45,17 @@ const Footer = () => {
 export default Footer
 
 const FooterContainer = styled.div`
-   // padding: 5rem calc((100vw - 1100px) /2);
+    padding: 5rem calc((100vw - 1100px) /2);
     display: grid;
-    grid-template-columns: repeat(1fr);
+    grid-template-columns: repeat(2, 1fr);
     color: #fff;
     background: #877D70;
-    height: 1234px;
+    
+    @media screen and (max-width: 500px) {
+        padding: 0;
+        grid-template-columns: repeat(1fr);
+        height: 1234px;
+    }
 `
 const FooterDesc = styled.div`
     padding: 0 2rem;

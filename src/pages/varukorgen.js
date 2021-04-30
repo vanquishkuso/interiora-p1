@@ -150,6 +150,16 @@ const CartPage = () => {
                    Mejladress <Mail />
                    Telefonnummer <Phone />
 
+                <CheckBoxTextWrapper>
+                    <CheckBox type="checkbox" style={{ marginRight: "1em", transform: "scale(1.5)" }} />
+                    <p>Jag godkänner&nbsp;
+                    <a href="/anvandarvillkor">användarvillkoren</a>
+                    &nbsp;förstår Interiöras&nbsp;
+                    <a href="/integritetspolicy">integritetspolicy</a>
+                    &nbsp;när jag bekräftar beställningen.
+                    </p>
+                </CheckBoxTextWrapper>
+
                 <ButtonWrapper>
                     <AniLink onClick={() => sendOrder()} paintDrip to="/bekraftelse" duration={0.6} hex="#877D70" style={{ textDecoration: "none", margin: "0 auto" }}>
                         <Button>Beställ</Button>
@@ -164,6 +174,25 @@ const CartPage = () => {
 }
 
 export default CartPage
+
+const CheckBoxTextWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    text-align: left;
+    a {
+        transition: 0.3s ease;
+        color: #877D70;
+
+        &:hover {
+            color: #373737;
+        }
+    }
+`
+
+const CheckBox = styled.input`
+    
+`
 
 const ButtonWrapper = styled.div`
     margin: 1em auto 0 auto;
