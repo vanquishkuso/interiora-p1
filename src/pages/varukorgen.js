@@ -13,6 +13,7 @@ const CartPage = () => {
     const [cartCost, setCartCost] = useState(null)
     const [updateCart, setUpdateCart] = useState("Add")
     const [tax, setTax] = useState(0)
+    const [check, setCheck] = useState(false)
 
     const handleRemove = (id) => {
         setUpdateCart("Remove")
@@ -37,6 +38,14 @@ const CartPage = () => {
         return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
     }
 
+    const checkIfBox = () => {
+        if (check === false) {
+            alert("Du måste bocka för att du godkänner")
+        }
+        if (check === true) {
+            sendOrder()
+        }
+    }
     const sendOrder = () => {
         let order = [{
             orderId: Math.floor((Math.random() * 100)),
@@ -151,7 +160,7 @@ const CartPage = () => {
                    Telefonnummer <Phone />
 
                 <CheckBoxTextWrapper>
-                    <CheckBox type="checkbox" style={{ marginRight: "1em", transform: "scale(1.5)" }} />
+                    <CheckBox type="checkbox" onClick={() => setCheck(prev => !prev)} style={{ marginRight: "1em", transform: "scale(1.5)" }} />
                     <p>Jag godkänner&nbsp;
                     <a href="/anvandarvillkor">användarvillkoren</a>
                     &nbsp;förstår Interiöras&nbsp;
@@ -159,10 +168,9 @@ const CartPage = () => {
                     &nbsp;när jag bekräftar beställningen.
                     </p>
                 </CheckBoxTextWrapper>
-
                 <ButtonWrapper>
-                    <AniLink onClick={() => sendOrder()} paintDrip to="/bekraftelse" duration={0.6} hex="#877D70" style={{ textDecoration: "none", margin: "0 auto" }}>
-                        <Button>Beställ</Button>
+                    <AniLink onClick={() => checkIfBox()} paintDrip to="/bekraftelse" duration={0.6} hex="#877D70" style={{ textDecoration: "none", margin: "0 auto" }}>
+                        <ConfirmButton disabled={!check}>Beställ</ConfirmButton>
                     </AniLink>
                 </ButtonWrapper>
             </FormWrapper> : null}
@@ -173,8 +181,19 @@ const CartPage = () => {
     )
 }
 
+
 export default CartPage
 
+
+const ConfirmButton = styled(Button)`
+    &:disabled {
+        opacity: 0.5;
+        transform: translateY(0px);
+    }
+    &:disabled:hover {
+        background-color: #373737;
+    }
+`
 const CheckBoxTextWrapper = styled.div`
     display: flex;
     flex-direction: row;
