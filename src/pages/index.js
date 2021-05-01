@@ -157,6 +157,7 @@ const Product = styled.div`
 
 const Price = styled.p`
     font-size: 18px;
+    text-align: center;
 `
 
 const MiniBannerWrapper = styled.div`

@@ -193,6 +193,7 @@ const Product = styled.div`
 const Price = styled.p`
     font-size: 1em;
     margin-right: 0em;
+    text-align: center;
 `
 
 const LinkWrapper = styled.div`
