@@ -38,7 +38,7 @@ const SearchWrapper = styled.div`
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: calc(100% + 88px);
+    top: calc(100% + 43px);
     left: 0;
     right: 0;
     border-radius: 5px;
