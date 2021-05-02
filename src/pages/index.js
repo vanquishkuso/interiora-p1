@@ -40,6 +40,7 @@ const IndexPage = () => {
         <Layout>
             <SEO title="Interiöra" />
             <Hero title={"Interiöra"} paragraph={"Minimalism när den är som bäst"} />
+            <Line />
             <ProductsWrapper id="product-section">
                 {products.slice(0, 6).map(({ slug, ...products }, i) => (
                     <Product>
@@ -122,6 +123,22 @@ const IndexPage = () => {
 }
 
 export default IndexPage
+
+const Line = styled.hr`
+    width: 60vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1.38em;
+    margin-right: 0.5em;
+    margin-left: 0.5em;
+    border-top: 1px solid #373737;
+    opacity: 20%;
+
+    @media screen and (max-width: 500px) {
+        width: 80vw;
+    }
+    
+`
 
 const ProductsWrapper = styled.div`
     display: grid;
