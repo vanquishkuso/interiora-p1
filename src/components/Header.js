@@ -181,6 +181,7 @@ const Bars = styled(FaBars)`
     display: block;
     font-size: 1.8rem;
     cursor: pointer;
+    margin: 0 auto;
 }
 
 @media screen and (max-width: 500px){
