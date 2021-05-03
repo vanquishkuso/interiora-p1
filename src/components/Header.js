@@ -29,12 +29,8 @@ const Header = () => {
 
   return (
     <Nav>
-
       <Wrapper>
         <Bars onClick={menuClick} />
-
-
-
         <NavLink to="/mitt-konto" style={{ display: "flex", alignContent: "center", order: "2" }}>
           <Account />
         </NavLink>
@@ -255,11 +251,11 @@ const Account = styled(BsFillPersonFill)`
 const NavMenu = styled.div`
   display: flex;
   align-items: center;
-  margin-right: 0px;
+  margin: 0em 2vw 0em 2vw;
 
   @media screen and (max-width: 1085px) {
     display: none;
-
+    margin: 0;
   }
 `
 
@@ -270,6 +266,7 @@ const MobileWrapper = styled.div`
   position: absolute;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 70px;
   left: 0;
   right: 0;
   text-align: center;
@@ -277,11 +274,11 @@ const MobileWrapper = styled.div`
 `
 
 const MobileMenu = styled.div`
- // z-index: 60;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  justify-items: center;
+  justify-content: flex-start;
+  margin-top: 20px;
+  justify-items: flex-start;
   align-items: center;
   align-content: center;
   height: 100%;
@@ -309,8 +306,9 @@ const MobileNavLink = styled(Link)`
 
 const MobileMenuCloseIcon = styled(AiOutlineClose)`
     position: absolute;
-    top: 8%;
+    top: 0;
     right: 0;
+    margin-top: 20px;
     margin-right: 0.9em;
     color: #877D70;
     font-size: 1.8rem;
