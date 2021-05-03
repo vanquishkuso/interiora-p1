@@ -120,7 +120,7 @@ const Wrapper = styled.div`
   align-content: center;
 `
 
-const Logo = styled.div`
+const Logo = styled(Link)`
   text-decoration: none;
   cursor: pointer;
   color: #373737;
