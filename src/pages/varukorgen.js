@@ -4,8 +4,7 @@ import Layout from '../components/Layout'
 import SEO from '../components/Seo'
 import { BiAlarm, BiTrash } from 'react-icons/bi'
 import { Button } from '../components/Button'
-import TransitionLink from "gatsby-plugin-transition-link"
-import AniLink from "gatsby-plugin-transition-link/AniLink"
+import { Link } from "gatsby"
 
 const CartPage = () => {
     const [getCart, setGetCart] = useState([])
@@ -169,9 +168,9 @@ const CartPage = () => {
                     </p>
                 </CheckBoxTextWrapper>
                 <ButtonWrapper>
-                    <AniLink onClick={() => checkIfBox()} paintDrip to="/bekraftelse" duration={0.6} hex="#877D70" style={{ textDecoration: "none", margin: "0 auto" }}>
+                    <Link onClick={() => checkIfBox()} to="/bekraftelse" style={{ textDecoration: "none", margin: "0 auto" }}>
                         <ConfirmButton disabled={!check}>Beställ</ConfirmButton>
-                    </AniLink>
+                    </Link>
                 </ButtonWrapper>
             </FormWrapper> : null}
 
