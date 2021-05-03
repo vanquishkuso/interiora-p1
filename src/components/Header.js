@@ -31,18 +31,28 @@ const Header = () => {
     <Nav>
 
       <Wrapper>
-        <Logo to="/">Interiöra</Logo>
+        <Bars onClick={menuClick} />
 
 
-        <NavLink to="/mitt-konto">
+
+        <NavLink to="/mitt-konto" style={{ display: "flex", alignContent: "center", order: "2" }}>
           <Account />
         </NavLink>
+
+        <Logo to="/">Interiöra</Logo>
+
+        <NavMenu>
+          {MenuData.map((item, index) => (
+            <NavLink to={item.link} key={index}>{item.title}</NavLink>
+          ))}
+
+        </NavMenu>
 
         <SearchClickable onClick={searchClick}>
           <Search />
         </SearchClickable>
 
-        <NavLink to="/varukorgen">
+        <NavLink to="/varukorgen" style={{ display: "flex", alignContent: "center", order: "4" }}>
           <Cart />
         </NavLink>
 
@@ -75,12 +85,7 @@ const Header = () => {
         : null
       }
 
-      <NavMenu>
-        {MenuData.map((item, index) => (
-          <NavLink to={item.link} key={index}>{item.title}</NavLink>
-        ))}
 
-      </NavMenu>
 
 
 
