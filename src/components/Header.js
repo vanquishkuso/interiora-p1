@@ -31,9 +31,8 @@ const Header = () => {
     <Nav>
 
       <Wrapper>
-        <NavLink to="/" style={{ textDecoration: "none", margin: "0 auto" }}>
-          <Logo style={{ fontFamily: 'Poppins', fontSize: '2rem' }}>Interiöra</Logo>
-        </NavLink>
+        <Logo to="/">Interiöra</Logo>
+
 
         <NavLink to="/mitt-konto">
           <Account />
