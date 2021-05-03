@@ -43,6 +43,11 @@ const IndexPage = () => {
 
             <SubHeader>
                 <Line />
+                <h3 style={{
+                    textAlign: "center", marginTop: "1em", letterSpacing: "3px",
+                    fontWeight: "bold"
+                }}>Produkter</h3>
+                <Line />
             </SubHeader>
 
             <ProductsWrapper id="product-section">
@@ -133,7 +138,7 @@ const SubHeader = styled.div`
  flex-direction: row;
  align-items: center;
  justify-items: center;
- margin-top: 0em;
+ margin-top: 1em;
 
  @media screen and (max-width: 500px){
      margin: 0;
