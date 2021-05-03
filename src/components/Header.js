@@ -244,8 +244,6 @@ const Account = styled(BsFillPersonFill)`
     font-size: 1.8rem;
     cursor: pointer;
   }
-
-
 `
 
 const NavMenu = styled.div`
