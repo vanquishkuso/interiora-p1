@@ -141,7 +141,7 @@ const Logo = styled(Link)`
   @media screen and (max-width: 500px) {
     margin: 0 auto;
     z-index: 999;
-    width: 100%;
+
   }
 
   @media screen and (max-width: 1085px) {
@@ -210,7 +210,7 @@ const Search = styled(FiSearch)`
 
 const SearchClickable = styled.div`
   cursor: pointer;
-  
+  order: 4;
 `
 
 const Cart = styled(FiShoppingCart)`
