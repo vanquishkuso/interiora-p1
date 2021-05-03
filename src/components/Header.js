@@ -30,13 +30,26 @@ const Header = () => {
   return (
     <Nav>
 
-      <AniLink paintDrip to="/" duration={0.6} hex="#877D70" style={{ textDecoration: "none", margin: "0 auto" }}>
-        <Logo style={{ fontFamily: 'Poppins', fontSize: '2rem' }}>Interiöra</Logo>
-      </AniLink>
+      <Wrapper>
+        <NavLink to="/" style={{ textDecoration: "none", margin: "0 auto" }}>
+          <Logo style={{ fontFamily: 'Poppins', fontSize: '2rem' }}>Interiöra</Logo>
+        </NavLink>
+
+        <NavLink to="/mitt-konto">
+          <Account />
+        </NavLink>
+
+        <SearchClickable onClick={searchClick}>
+          <Search />
+        </SearchClickable>
+
+        <NavLink to="/varukorgen">
+          <Cart />
+        </NavLink>
+
+      </Wrapper>
 
 
-
-      <Bars onClick={menuClick} />
 
       { showMobileMenu ? <MobileWrapper>
         <MobileMenuCloseIcon onClick={menuClick} />
@@ -70,21 +83,12 @@ const Header = () => {
 
       </NavMenu>
 
-      <CartWrapper>
-        <NavLink>
-          <AniLink paintDrip to="/mitt-konto" duration={0.6} hex="#877D70"><Account /></AniLink>
-        </NavLink>
-        <SearchClickable onClick={searchClick}>
-          <Search />
-        </SearchClickable>
-
-        {show ? <div><SearchPage /><CloseIcon onClick={searchClick} /><SearchWrapper onClick={searchClick} /></div> : null}
 
 
-        <NavLink>
-          <AniLink paintDrip to="/varukorgen" duration={0.6} hex="#877D70"><Cart /></AniLink>
-        </NavLink>
-      </CartWrapper>
+      {show ? <div><SearchPage /><CloseIcon onClick={searchClick} /><SearchWrapper onClick={searchClick} /></div> : null}
+
+
+
       {/*
       <NavBtn>
         <Button primary="true" round="true" to="/aterforsaljare">
@@ -107,15 +111,23 @@ const Nav = styled.nav`
   position: relative;
 `
 
-const Logo = styled.div`
+const Wrapper = styled.div`
   display: flex;
+  flex-direction: row;
+  width: 100%;
   align-items: center;
+  justify-content: center;
+  justify-items: center;
+  align-content: center;
+`
+
+const Logo = styled.div`
   text-decoration: none;
-  padding: 0 1rem;
-  height: 100%;
   cursor: pointer;
   color: #373737;
   text-decoration: none;
+  font-family: 'Poppins';
+  font-size: clamp(1.35rem, 8vw, 2rem);
 
   &:hover {
     color: #877D70;
@@ -123,14 +135,14 @@ const Logo = styled.div`
   }
 
   @media screen and (max-width: 500px) {
-    position: relative;
     margin: 0 auto;
-    font-size: 1.8rem;
     z-index: 999;
-    top: 0;
-    left: 20%;
     width: 100%;
-    text-align: center;
+  }
+
+  @media screen and (max-width: 1085px) {
+    order: 3;
+    margin: 0 auto;
   }
 `
 
@@ -145,6 +157,8 @@ color: #877D70;
 
 @media screen and (max-width: 1085px) {
     margin: 0 auto;
+    display: block;
+    padding: 0;
   }
 
   &:hover {
@@ -163,13 +177,14 @@ const Bars = styled(FaBars)`
 }
 
   @media screen and (max-width: 1085px) {
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate(100%, 95%);
-  font-size: 1.8rem;
-  cursor: pointer;
+    order: 1;
+    display: block;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 500px){
+  margin-left: 0.3em;
 }
 
 `
@@ -184,11 +199,6 @@ const Search = styled(FiSearch)`
     }
     
   @media screen and (max-width: 1085px) {
-  display: block;
-  position: absolute;
-  top: 0;
-  right: -15px;
-  transform: translate(-300%, 95%);
   font-size: 1.8rem;
 }
 `
@@ -199,6 +209,7 @@ const SearchClickable = styled.div`
 `
 
 const Cart = styled(FiShoppingCart)`
+  order: 5;
   color: #877D70;
   font-size: 1.8rem;
   cursor: pointer;
@@ -209,13 +220,7 @@ const Cart = styled(FiShoppingCart)`
     }
 
   @media screen and (max-width: 1085px) {
-  display: block;
-  position: absolute;
-  top: 0;
-  right: -5px;
-  transform: translate(-100%, 95%);
   font-size: 1.8rem;
-
 }
 `
 
@@ -224,7 +229,6 @@ const Account = styled(BsFillPersonFill)`
   font-size: 2rem;
   cursor: pointer;
 
-
   &:hover {
       color: #373737;
       transition: 0.3s ease;
@@ -232,36 +236,15 @@ const Account = styled(BsFillPersonFill)`
     
     @media screen and (max-width: 1085px) {
     display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(-380%, 80%);
   }
 
   @media screen and (max-width: 500px) {
     display: block;
-  position: absolute;
-  top: 0;
-  left: 45px;
-  transform: translate(100%, 95%);
-  font-size: 1.8rem;
-  cursor: pointer;
+    font-size: 1.8rem;
+    cursor: pointer;
   }
 
 
-`
-
-const CartWrapper = styled.div`
-  width: 200px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
-
-  @media screen and (max-width: 1085px) {
-    width: auto;
-
-  }
 `
 
 const NavMenu = styled.div`
@@ -297,7 +280,6 @@ const MobileMenu = styled.div`
   align-items: center;
   align-content: center;
   height: 100%;
-
 `
 
 const MobileNavLink = styled(Link)`
