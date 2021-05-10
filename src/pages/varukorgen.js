@@ -5,6 +5,7 @@ import SEO from '../components/Seo'
 import { BiAlarm, BiTrash } from 'react-icons/bi'
 import { Button } from '../components/Button'
 import { Link } from "gatsby"
+import { FaCheck } from "react-icons/fa"
 
 const CartPage = () => {
     const [getCart, setGetCart] = useState([])
@@ -13,6 +14,12 @@ const CartPage = () => {
     const [updateCart, setUpdateCart] = useState("Add")
     const [tax, setTax] = useState(0)
     const [check, setCheck] = useState(false)
+    const [checkField, setCheckField] = useState({
+        name: false,
+        card: false,
+        cvc: false,
+        monthyear: false
+    })
 
     const handleRemove = (id) => {
         setUpdateCart("Remove")
@@ -60,9 +67,15 @@ const CartPage = () => {
         localStorage.removeItem("products")
     }
 
+    const handleInputCard = () => {
+        setCheckField({
+            name: true,
+            card: true
+        })
+    }
+
+
     useEffect(() => {
-
-
         let fetchData
         if (getCart === null || getCart.length === 0) {
             fetchData = (
@@ -118,6 +131,7 @@ const CartPage = () => {
         setGetCart(JSON.parse(localStorage.getItem("products")))
     }, [])
 
+
     return (
         <Layout>
             <SEO title="Varukorgen - Interiöra" />
@@ -158,6 +172,74 @@ const CartPage = () => {
                    Mejladress <Mail />
                    Telefonnummer <Phone />
 
+
+
+
+
+
+
+
+
+                <PaymentWrapper>
+                    <h2 style={{ marginBottom: "1em", letterSpacing: "3px" }}>Kortbetalning</h2>
+                    <FirstCardColumn>
+                        <CheckField style={{ fontWeight: "bold", position: "relative", left: "calc(100% + -30px)", bottom: "-53px", zIndex: "90", color: "green", opacity: checkField.name ? "100%" : "0%" }} />
+                        <CardTitle>Kortinnehavare</CardTitle>
+                        <CardName onChange={() => setCheckField({ ...checkField, name: true })} />
+
+
+                        <CheckField style={{ fontWeight: "bold", position: "relative", left: "calc(100% + -30px)", bottom: "-66px", zIndex: "50", color: "green", opacity: checkField.card ? "100%" : "0%" }} />
+                        <CardTitle style={{ marginTop: "0.8em" }}>Kortnummer</CardTitle>
+                        <CardNumber onChange={() => setCheckField({ ...checkField, card: true })} />
+                    </FirstCardColumn>
+
+
+                    <SecondCardColumn>
+
+
+                        <div style={{ marginRight: "1em" }}>
+                            <CheckField style={{ fontWeight: "bold", position: "relative", left: "calc(100% + -30px)", bottom: "-57px", zIndex: "50", color: "green", opacity: checkField.cvc ? "100%" : "0%" }} />
+                            <CardTitle>Säkerhetskod</CardTitle>
+                            <CVC onChange={() => setCheckField({ ...checkField, cvc: true })} />
+                        </div>
+
+
+                        <div style={{ display: "flex", flexDirection: "column" }}>
+                            <CheckField style={{ fontSize: "1em", fontWeight: "bold", position: "relative", left: "calc(100% + -5px)", bottom: "-51px", zIndex: "50", color: "green", opacity: checkField.monthyear ? "100%" : "0%" }} />
+                            <CardTitle>Giltighetstid</CardTitle>
+
+                            <div style={{ display: "flex", flexDirection: "row" }}>
+
+                                <CardMonthYear onChange={() => setCheckField({ ...checkField, monthyear: false })}>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </CardMonthYear>
+                                <CardYear onChange={() => setCheckField({ ...checkField, monthyear: true })}>
+                                    <option value="2021">2021</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2025">2025</option>
+                                </CardYear>
+                            </div>
+                        </div>
+                    </SecondCardColumn>
+
+                </PaymentWrapper>
+
+
+
+
                 <CheckBoxTextWrapper>
                     <CheckBox type="checkbox" onClick={() => setCheck(prev => !prev)} style={{ marginRight: "1em", transform: "scale(1.5)" }} />
                     <p>Jag godkänner&nbsp;
@@ -182,6 +264,129 @@ const CartPage = () => {
 
 
 export default CartPage
+
+const PaymentBox = styled.div`
+
+`
+
+const CheckField = styled(FaCheck)`
+
+`
+
+const CardTitle = styled.h4`
+    font-weight: 400;
+    letter-spacing: 0.7px;
+    opacity: 50%;
+`
+
+const FirstCardColumn = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2em;
+`
+
+const SecondCardColumn = styled.div`
+    display: flex;
+    flex-direction: row;
+    margin-top: 1em;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (max-width: 500px) {
+        flex-direction: column;
+    }  
+`
+
+const PaymentWrapper = styled.div`
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 12px 24px;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    width: 400px;
+    margin: 0 auto;
+    margin-bottom: 5em;
+    margin-top: 5em;
+    padding: 3em;
+    
+    @media screen and (max-width: 500px) {
+        width: 450px;
+        max-width: 100%;
+        padding: 2em;
+    }  
+`
+
+
+
+const CardName = styled.input`
+    font-size: 1em;
+    border: solid 1px #ebebeb;
+    border-radius: 5px;
+    height: 2.5em;
+    margin-bottom: 1em;
+    padding-left: 1em;
+    margin-top: 0.3em;
+    font-weight: bold;
+    color: #373737;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 50;
+    @media screen and (max-width: 500px) {
+        max-width: 100%; 
+    }  
+`
+
+const CardNumber = styled.input`
+    font-size: 1em;
+    height: 2.5em;
+    border-radius: 5px;
+    border: none;
+    padding-left: 1em;
+    margin-top: 0.3em;
+    font-weight: bold;
+    color: #373737;
+    letter-spacing: 1px
+`
+
+const CVC = styled.input`
+    font-size: 1em;
+    height: 2.5em;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    margin-right: 1em;
+    padding-left: 1em;
+    margin-top: 0.3em;
+    font-weight: bold;
+    color: #373737;
+    letter-spacing: 1px
+`
+const CardMonthYear = styled.select`
+    width: 60px;
+    font-size: 1em;
+    margin-right: 1em;
+    height: 2.3em;
+    border-radius: 5px;
+    border: none;
+    padding-left: 1em;
+    margin-top: 0.3em;
+    font-weight: bold;
+    color: #373737;
+    letter-spacing: 1px
+`
+
+const CardYear = styled.select`
+    width: 90px;
+    font-size: 1em;
+    margin-right: 1em;
+    height: 2.3em;
+    border-radius: 5px;
+    border: none;
+    padding-left: 1em;
+    margin-top: 0.3em;
+    font-weight: bold;
+    color: #373737;
+    letter-spacing: 1px
+`
+
 
 
 const ConfirmButton = styled(Button)`
@@ -218,7 +423,8 @@ const ButtonWrapper = styled.div`
 `
 
 const FormTitle = styled.h2`
-
+    margin-bottom: 1em;
+    letter-spacing: 3px;
 `
 const FormWrapper = styled.form`
     display: flex;
@@ -235,35 +441,35 @@ const FormWrapper = styled.form`
 const Name = styled.input`
     border: solid #373737 1px;
     border-radius: 5px;
-    height: 2em;
+    height: 2.5em;
     margin-bottom: 1em;
 `
 
 const City = styled.input`
     border: solid #373737 1px;
     border-radius: 5px;
-    height: 2em;
+    height: 2.5em;
     margin-bottom: 1em;
 `
 
 const Mail = styled.input`
     border: solid #373737 1px;
     border-radius: 5px;
-    height: 2em;
+    height: 2.5em;
     margin-bottom: 1em;
 `
 
 const Phone = styled.input`
     border: solid #373737 1px;
     border-radius: 5px;
-    height: 2em;
+    height: 2.5em;
     margin-bottom: 1em;
 `
 
 const Address = styled.input`
     border: solid #373737 1px;
     border-radius: 5px;
-    height: 2em;
+    height: 2.5em;
     margin-bottom: 1em;
 `
 
@@ -277,7 +483,7 @@ const ZipTitle = styled.p`
 
 const Zip = styled.input`
     width: 100%;
-    height: 2em;
+    height: 2.5em;
     border: solid #373737 1px;
     border-radius: 5px;
 
