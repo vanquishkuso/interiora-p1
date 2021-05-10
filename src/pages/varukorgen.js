@@ -5,7 +5,7 @@ import SEO from '../components/Seo'
 import { BiAlarm, BiTrash } from 'react-icons/bi'
 import { Button } from '../components/Button'
 import { Link } from "gatsby"
-import { FaCheck } from "react-icons/fa"
+import { FaCheck, FaCcVisa, FaCcMastercard } from "react-icons/fa"
 
 const CartPage = () => {
     const [getCart, setGetCart] = useState([])
@@ -179,9 +179,10 @@ const CartPage = () => {
 
 
 
-
                 <PaymentWrapper>
+
                     <h2 style={{ marginBottom: "1em", letterSpacing: "3px" }}>Kortbetalning</h2>
+
                     <FirstCardColumn>
                         <CheckField style={{ fontWeight: "bold", position: "relative", left: "calc(100% + -30px)", bottom: "-53px", zIndex: "90", color: "green", opacity: checkField.name ? "100%" : "0%" }} />
                         <CardTitle>Kortinnehavare</CardTitle>
@@ -234,7 +235,10 @@ const CartPage = () => {
                             </div>
                         </div>
                     </SecondCardColumn>
-
+                    <div style={{ display: "flex", flexDirection: "row", justifyContent: "center", marginTop: "2em", opacity: "50%" }}>
+                        <VisaCard />
+                        <MasterCard />
+                    </div>
                 </PaymentWrapper>
 
 
@@ -264,6 +268,17 @@ const CartPage = () => {
 
 
 export default CartPage
+
+
+const VisaCard = styled(FaCcVisa)`
+    font-size: 2.5em;
+    margin-right: 0.25em;
+`
+
+const MasterCard = styled(FaCcMastercard)`
+    font-size: 2.5em;
+    margin-left: 0.25em;
+`
 
 const PaymentBox = styled.div`
 
